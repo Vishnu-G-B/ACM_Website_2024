@@ -1184,15 +1184,15 @@
           <div class="w-dyn-list">
             <div role="list" class="blog-cards-list w-dyn-items">
               <% events.forEach(function(event,index) { %>
-              <div role="listitem" class="w-dyn-item gradient-border" style="margin:3px; margin-left:4px;">
-                <div class="blog-card-post-container" style="background-color: white;">
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
                   <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
                     data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="/events"
                     class="blog-card-image-link w-inline-block">
-                    <!-- <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-container z-index-1">
                   <div class="luminous-borders-blur blog-card-image"></div>
                   <div class="luminous-borders-solid blog-card-image"></div>
-                </div> -->
+                </div>
                     <img alt="Inauguration 2022" loading="lazy" src="<%= event.imagepath %>"
                       sizes="(max-width: 767px) 100vw, 33vw" class="blog-card-image" />
                   </a>
@@ -1210,7 +1210,7 @@
                             rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
                           transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
                             rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                        " class="blog-post-card-title title">
+                        " class="blog-post-card-title">
                           <%= event.name %>
                         </h3>
                       </a>
@@ -1225,7 +1225,7 @@
                           rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
                         transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
                           rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          color:black;
+                          
                       " class="text-md">
                       <%= event.description %>
                       </p>
@@ -1243,30 +1243,15 @@
                             rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
                           transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
                             rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                        " class="arrow-button-text title">
+                        " class="arrow-button-text">
                           See more ->
-                        </div>
-                        <div style="
-                          -webkit-transform: translate3d(0, 110%, 0)
-                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                            skew(0, 0);
-                          -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
-                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
-                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                          transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
-                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                        " class="button-arrow">
-                          <img alt="polygon" loading="lazy"
-                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
-                            class="button-arrow-head" />
                         </div>
                       </div>
                     </a>
-                    <!-- <div class="luminous-borders-container">
+                    <div class="luminous-borders-container">
                   <div class="luminous-borders-blur blog-card-text"></div>
                   <div class="luminous-borders-solid blog-card-text"></div>
-                </div> -->
+                </div>
                   </div>
                 </div>
               </div>
