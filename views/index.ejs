@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html data-wf-domain="shadows-template.webflow.io" data-wf-page="64d9e7b1693ca5d7a467c499"
+  data-wf-site="64d9e7b1693ca5d7a467c4b4">
+
+<head>
+  <%- include("../partials/imports.ejs", {title:"ACM-MITBLR"}) %>
+</head>
+
+<body>
+  <%- include("../partials/navbar.ejs") %>
+    <% if(!darkMode) {%>
+      <section class="hero-container min-height" style="background-color: white">
+        <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: white;">
+          <canvas id="myCanvas"></canvas>
+          <div class="heading">
+            <h1 class="title"
+              style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">ACM<br>MITB
+              CHAPTER</h1>
+          </div>
+        </div>
+        <script>
+          const canvas = document.getElementById('myCanvas')
+          const c = canvas.getContext('2d')
+
+          let mouseX
+          let mouseY
+
+          canvas.height = document.getElementById("canvasParent").clientHeight;
+          canvas.width = document.getElementById("canvasParent").clientWidth;
+
+          const canvasWidth = canvas.width
+          const canvasHeight = canvas.height
+
+          const maxRadius = 60
+
+          canvas.onmousemove = function (e) {
+            mouseX = e.clientX
+            mouseY = e.clientY
+          }
+
+          window.addEventListener('resize', function () {
+            canvas.height = document.getElementById("canvasParent").clientHeight;
+            canvas.width = document.getElementById("canvasParent").clientWidth;
+          })
+
+          function Circle(xCoordinate, yCoordinate, radius) {
+            const randomNumber = Math.floor(Math.random() * 4)
+            const randomTrueOrFalse = Math.floor(Math.random() * 2)
+
+            this.xCoordinate = xCoordinate
+            this.yCoordinate = yCoordinate
+            this.radius = radius
+            this.color = colorArray[randomNumber]
+
+            if (randomTrueOrFalse == 1) {
+              this.xVelocity = -Math.random() * 1
+            } else {
+              this.xVelocity = Math.random() * 1
+            }
+
+            if (randomTrueOrFalse == 1) {
+              this.yVelocity = -Math.random() * 1
+            } else {
+              this.yVelocity = Math.random() * 1
+            }
+
+            // As distance gets closer to 0, increase radius
+
+            this.update = function () {
+              this.xCoordinate += this.xVelocity
+              const xDistance = mouseX - this.xCoordinate
+              const yDistance = mouseY - this.yCoordinate
+              const originalRadius = radius
+              this.yCoordinate += this.yVelocity
+
+              // Movement Functions
+              if (
+                this.xCoordinate + this.radius > canvasWidth ||
+                this.xCoordinate - this.radius < 0
+              ) {
+                this.xVelocity = -this.xVelocity
+              }
+              if (
+                this.yCoordinate + this.radius > canvasHeight ||
+                this.yCoordinate - this.radius < 0
+              ) {
+                this.yVelocity = -this.yVelocity
+              }
+
+              // Radius Decrease Functions
+              // When distance between circle center and mouse on horizontal axis is less than 50, increase radius until it is equal to 35
+              if (
+                xDistance < 50 &&
+                xDistance > -50 &&
+                this.radius < maxRadius &&
+                yDistance < 50 &&
+                yDistance > -50
+              ) {
+                this.radius += 2
+              } else if (
+                (xDistance >= 50 && originalRadius < this.radius) ||
+                (xDistance <= -50 && originalRadius < this.radius) ||
+                (yDistance >= 50 && originalRadius < this.radius) ||
+                (yDistance <= -50 && originalRadius < this.radius)
+              ) {
+                this.radius -= 2
+              }
+
+              this.draw()
+            }
+
+            this.draw = function () {
+              //c.beginPath()
+              //c.arc(
+              //  this.xCoordinate,
+              //  this.yCoordinate,
+              //  Math.abs(this.radius),
+              //  0,
+              //  Math.PI * 2
+              //)
+              //c.fillStyle = this.color
+              //c.fill()
+              c.save(); // Save the current state of the context
+              c.beginPath();
+              c.translate(this.xCoordinate + this.radius / 2, this.yCoordinate + this.radius / 2); // Translate to the center of the square
+              c.rotate((Math.PI / 180) * 45); // Rotate by 45 degrees (or any other desired angle)
+              c.roundRect(-this.radius / 2, -this.radius / 2, Math.abs(this.radius), Math.abs(this.radius), Math.abs(this.radius / 4)); // Draw the square from the center
+              c.fillStyle = this.color
+              c.fill();
+              //c.lineWidth = 10;
+              //c.lineJoin = "round";
+              //c.strokeStyle = this.color;
+              //c.stroke();
+              c.restore();
+            }
+          }
+
+          const colorArray = ['#1d6bff', '#1d6bff', '#ff6725', '#ff6725']
+          const myCircle = new Circle(30, 80, 10)
+          let circleArray = []
+
+          for (let i = 0; i < 900; i++) {
+            const randomXCoordinate = Math.random() * canvasWidth
+            const randomYCoordinate = Math.random() * canvasHeight
+            const randomRadius = Math.random() * 12
+            circleArray.push(
+              new Circle(randomXCoordinate, randomYCoordinate, randomRadius)
+            )
+          }
+
+          function updateAll() {
+            c.clearRect(0, 0, canvasWidth, canvasHeight)
+            myCircle.update()
+            for (let i = 0; i < circleArray.length; i++) {
+              circleArray[i].update()
+            }
+            window.requestAnimationFrame(updateAll)
+          }
+
+          updateAll()
+
+        </script>
+      </section>
+      <section class="relative-container" id="About" style="padding:3px">
+        <div class="container w-container gradient-border" style="background-color: white;">
+          <div class="welcom-container">
+            <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+              data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="overline white title" style="color: #1e1e1e;">About ACM</h2>
+              </div>
+            </div>
+            <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+              <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+              " class="welcom-text">
+                The Association for Computing Machinery (ACM), established in 1947, is a key organization in computing.
+                With a broad membership from academia, research, practice, and students, ACM facilitates idea exchange
+                and best practices. Through conferences, workshops, and SIGs covering diverse computing fields, ACM
+                drives innovation. It also promotes ethical standards and resources on responsible AI and cybersecurity,
+                fostering collaboration and advancement in computing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative-container" id="About" style="padding:3px">
+        <div class="container w-container gradient-border" style="background-color: white;">
+          <div class="welcom-container">
+            <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+              data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="overline white title" style="color: #1e1e1e;">ACM @ MIT-BLR</h2>
+              </div>
+            </div>
+            <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+              <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+              " class="welcom-text">The ACM chapter at Manipal Institute of Technology, Bengaluru, is a thriving
+                community for computing students. Focused on technology advancement, it fosters collaboration and idea
+                exchange among students, faculty, and industry experts. Through workshops, seminars, and activities, the
+                chapter provides hands-on experience with cutting-edge technologies, promoting dynamic learning
+                environments. Introducing SIG-AI, SIG-SOFT, and ACM-W, the chapter emphasizes artificial intelligence,
+                software engineering, and support for women in computing. Committed to ethical standards and responsible
+                AI use, we shape the future of computing in the region.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative-container" id="About" style="padding:3px">
+        <div class="container w-container gradient-border" style="background-color: white;">
+          <div class="welcom-container">
+            <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+              data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="overline white title" style="color: #1e1e1e;">BENEFITS OF ACM</h2>
+              </div>
+            </div>
+            <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+              <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+              " class="welcom-text">
+                Being a part of the ACM Student Chapter at Manipal Institute of Technology, Bengaluru opens up a world
+                of opportunities for students. You'll have access to a community of like-minded peers, engaging in
+                workshops, seminars, and networking events. These experiences provide invaluable hands-on exposure to
+                cutting-edge technologies and connections with industry professionals. Additionally, membership grants
+                access to a wealth of educational resources, enhancing academic and professional development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="Constituents" class="gradient-border" style="background-color: white; margin:3px 3px;">
+        <div class="w-layout-blockcontainer container w-container">
+          <!-- <div class="luminous-borders-container">
+            <div class="luminous-borders-blur no-bottom"></div>
+            <div class="luminous-borders-solid no-bottom"></div>
+          </div> -->
+          <div class="section-title-container">
+            <div data-w-id="3ebe3780-305e-0a7b-1df5-f765eecef760" class="heading-animation-trigger padding">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="section-title-line title">EVENTS</h2>
+                <!-- <div class="section-title-blur title">EVENTS</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative-container">
+        <div class="w-dyn-list">
+          <div role="list" class="blog-cards-list w-dyn-items">
+            <% events.forEach(function(event,index) { %>
+            <div role="listitem" class="w-dyn-item gradient-border" style="margin:3px; margin-left:4px;">
+              <div class="blog-card-post-container" style="background-color: white;">
+                <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                  data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="/events"
+                  class="blog-card-image-link w-inline-block">
+                  <!-- <div class="luminous-borders-container z-index-1">
+                <div class="luminous-borders-blur blog-card-image"></div>
+                <div class="luminous-borders-solid blog-card-image"></div>
+              </div> -->
+                  <img alt="Inauguration 2022" loading="lazy" src="<%= event.imagepath %>"
+                    sizes="(max-width: 767px) 100vw, 33vw" class="blog-card-image" />
+                </a>
+                <div class="blog-card-text-container">
+                  <div class="blog-post-card-text-container">
+                    <a href="/events" class="w-inline-block">
+                      <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                        opacity: 0;
+                        -webkit-transform: translate3d(0, 25px, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="blog-post-card-title title">
+                        <%= event.name %>
+                      </h3>
+                    </a>
+                    <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                      opacity: 0;
+                      -webkit-transform: translate3d(0, 25px, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        color:black;
+                    " class="text-md">
+                    <%= event.description %>
+                    </p>
+                  </div>
+                  <a href="/events" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                    class="animated-arrow-button-blog-post-card w-inline-block">
+                    <div class="animated-arrow-button-container">
+                      <div style="
+                        -webkit-transform: translate3d(0, 110%, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="arrow-button-text title">
+                        See more ->
+                      </div>
+                      <div style="
+                        -webkit-transform: translate3d(0, 110%, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="button-arrow">
+                        <img alt="polygon" loading="lazy"
+                          src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                          class="button-arrow-head" />
+                      </div>
+                    </div>
+                  </a>
+                  <!-- <div class="luminous-borders-container">
+                <div class="luminous-borders-blur blog-card-text"></div>
+                <div class="luminous-borders-solid blog-card-text"></div>
+              </div> -->
+                </div>
+              </div>
+            </div>
+            <% }); %>
+      </section>
+      <section class="cta-section gradient-border" style="background-color: white; margin:4px 3px;">
+        <!-- <div class="luminous-borders-container"> -->
+        <!-- <div class="luminous-borders-blur no-bottom"></div> -->
+        <!-- <div class="luminous-borders-solid no-bottom"></div> -->
+        <!-- </div> -->
+        <div class="container w-container" style="background-color: white;">
+          <div class="cta-container">
+            <div class="cta-title-container">
+              <div class="cta-title-decoration-container">
+                <div data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c4" class="cta-decor-blur"></div>
+                <div data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c5" class="cta-decor-solid"></div>
+              </div>
+              <a class="explore" href="/events">
+                <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte title"><strong>Explore our past
+                    events -></strong>
+                </h2>
+              </a>
+            </div>
+            <div class="cta-text-container">
+            </div>
+          </div>
+        </div>
+        <!-- <div class="noise-background"></div> -->
+        <!-- <div class="white-background"></div> -->
+      </section>
+      <section id="Constituents" class="gradient-border" style="background-color: white; margin:3px 3px;">
+        <div class="w-layout-blockcontainer container w-container">
+          <!-- <div class="luminous-borders-container">
+            <div class="luminous-borders-blur no-bottom"></div>
+            <div class="luminous-borders-solid no-bottom"></div>
+          </div> -->
+          <div class="section-title-container">
+            <div data-w-id="3ebe3780-305e-0a7b-1df5-f765eecef760" class="heading-animation-trigger padding">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="section-title-line title">CONSTITUENTS</h2>
+                <!-- <div class="section-title-blur title">CONSTITUENTS</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="gradient-border" style="background-color: white; margin:3px; margin-top:6px;">
+        <div class="process-card-list-container">
+          <div id="w-node-_681334c6-0e0b-815f-54cd-98cb10937ca3-a467c499"
+            data-w-id="681334c6-0e0b-815f-54cd-98cb10937ca3" class="process-card-container">
+            <div data-w-id="9f9e2e21-0349-6f6b-4fb6-955983df6f72" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="process-card-title title">ACM</h2>
+              </div>
+            </div>
+            <p data-w-id="65794c6c-41c1-7e2a-5fe1-586987fe2b7b" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+            " class="text-md">
+              Established in 1947, the Association for Computing Machinery (ACM)
+              is a cornerstone in the world of computing and technology. Its
+              extensive membership, including academics, researchers,
+              practitioners, and students, fosters idea exchange and best
+              practices.
+            </p>
+            <!-- <div style="height: 100%" class="process-card-decor"></div> -->
+            <div class="process-card-decor-color" style="z-index: 3;"></div>
+            <!-- <div class="luminous-borders-container"> -->
+            <!-- <div class="gradient-border"></div> -->
+            <!-- <div class="luminous-borders-solid"></div> -->
+            <!-- </div> -->
+          </div>
+          <div id="w-node-_3fdfb9fa-cbce-776f-99b2-0f4c5772c9f2-a467c499"
+            data-w-id="3fdfb9fa-cbce-776f-99b2-0f4c5772c9f2" class="process-card-container">
+            <div data-w-id="7c5eaf8b-741f-5da8-3a7c-5528d91f494d" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="process-card-title title">ACM-W</h2>
+              </div>
+            </div>
+            <p data-w-id="3fdfb9fa-cbce-776f-99b2-0f4c5772c9f5" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+            " class="text-md">
+              ACM-W is an initiative within ACM supporting and advocating for
+              women in computing, providing networking, mentorship, and
+              professional development opportunities.
+            </p>
+            <!-- <div style="height: 0%" class="process-card-decor"></div>
+            <div class="process-card-decor blur"></div>
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur"></div>
+              <div class="luminous-borders-solid"></div>
+            </div> -->
+            <div class="process-card-decor-color" style="z-index: 3;"></div>
+          </div>
+          <div id="w-node-cf2796e4-b767-de8a-174e-2fad9869da65-a467c499"
+            data-w-id="cf2796e4-b767-de8a-174e-2fad9869da65" class="process-card-container">
+            <div data-w-id="fee2f438-b64e-e83e-a68b-90faea0fdaa1" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e
+              " class="animation-content">
+                <h2 class="process-card-title title">SIG-AI</h2>
+              </div>
+            </div>
+            <p data-w-id="cf2796e4-b767-de8a-174e-2fad9869da68" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);color:#1e1e1e;
+            " class="text-md">
+              SIG-AI, a segment of ACM, is a community focused on the realm of
+              artificial intelligence. It provides a forum for students to
+              collaborate and advance the field of AI.
+            </p>
+            <!-- <div style="height: 0%" class="process-card-decor"></div>
+            <div class="process-card-decor blur"></div>
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur"></div>
+              <div class="luminous-borders-solid"></div>
+            </div> -->
+            <div class="process-card-decor-color" style="z-index: 3;"></div>
+          </div>
+          <div id="w-node-d313a666-c9e8-57c2-98e6-6f9455449f92-a467c499"
+            data-w-id="d313a666-c9e8-57c2-98e6-6f9455449f92" class="process-card-container">
+            <div data-w-id="94c8f334-8dab-408d-815d-f0683ed292a9" class="heading-animation-trigger">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="process-card-title title">SIG-SOFT</h2>
+              </div>
+            </div>
+            <p data-w-id="d313a666-c9e8-57c2-98e6-6f9455449f95" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e
+            " class="text-md">
+              SIG-SOFT, a part of ACM, is a community dedicated to software
+              engineering. It serves as a platform for students to collaborate and
+              advance the field of software engineering.
+            </p>
+            <!-- <div style="height: 0%" class="process-card-decor"></div>
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur"></div>
+              <div class="luminous-borders-solid"></div>
+            </div>
+            <div class="process-card-decor blur"></div> -->
+            <div class="process-card-decor-color" style="z-index: 3;"></div>
+          </div>
+        </div>
+      </section>
+      <!-- <section>
+        <div class="w-layout-blockcontainer container w-container">
+          <div class="luminous-borders-container">
+            <div class="luminous-borders-blur no-bottom no-top"></div>
+            <div class="luminous-borders-solid no-bottom no-top"></div>
+          </div>
+          <div class="section-title-container">
+            <div data-w-id="c65270c2-ef24-83fe-1466-6d28b0f42459" class="heading-animation-trigger padding">
+              <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                <h2 class="section-title-line">Blog ( Coming Soon!! )</h2>
+                <div class="section-title-blur">Blog ( Coming Soon!! )</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- <section>
+        <div class="container-services w-container">
+          <div class="services-page-case-study-container" style="filter: blur(10px)">
+            <div id="w-node-_92f1b11f-2e2b-8702-2241-78fd4b8ba4e8-a467c499"
+              class="services-page-case-study-text-contianer">
+              <div class="spacer-0-7em---8px"></div>
+              <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4e9" class="heading-animation-trigger">
+                <div style="
+                  -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                    rotateY(0) rotateZ(0) skew(0, 0);
+                " class="animation-content">
+                  <h2 class="overline white">CASE STUDY</h2>
+                </div>
+              </div>
+              <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4ed" class="heading-animation-trigger">
+                <div style="
+                  -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                    rotateY(0) rotateZ(0) skew(0, 0);
+                " class="animation-content">
+                  <h2 class="heading-case-studie">
+                    The Results Speak for Themselves
+                  </h2>
+                </div>
+              </div>
+              <p data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4f1" style="
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="text-md">
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have suffered alteration in some form, by
+                injected humour, or randomised words which don&#x27;t look even
+                slightly believable. If you are going to use a passage of Lorem
+                Ipsum, you need to be sure there isn&#x27;t anything embarrassing
+                hidden in the middle of text. All the Lorem Ipsum generators on
+                the Internet tend to repeat predefined.
+              </p>
+              <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4f3" style="
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="services-page-case-study-buttons-contianer">
+                <a href="contact.html" class="button-green w-button">Request a quote</a><a href="case-studies.html"
+                  class="button-outline w-button">Browse case studies</a>
+              </div>
+            </div>
+            <div class="w-dyn-list">
+              <div role="list" class="w-dyn-items">
+                <div role="listitem" class="w-dyn-item">
+                  <div class="glow-cards">
+                    <div class="glow-card-title">
+                      <div class="glow-card-subtitle">
+                        <div data-w-id="451f8241-c6b3-a1d4-f7d0-1da8acfefd2e" style="height: 0%"
+                          class="glow-card-title-icon"></div>
+                        <div data-w-id="aab9e04d-254a-66bf-dfe3-c097ba6f8470" style="height: 0%"
+                          class="glow-card-title-icon blur"></div>
+                      </div>
+                      <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4ff" class="heading-animation-trigger">
+                        <div style="
+                          -webkit-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -ms-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="animation-content">
+                          <div class="overline white">BuzzBuzz</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="glow-card-text-container">
+                      <a href="#" class="w-inline-block">
+                        <h2 data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba503" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="heading-h5">
+                          Building a Robust Online Platform: A Web Development
+                          Journey
+                        </h2>
+                      </a>
+                      <p data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba504" style="
+                        opacity: 0;
+                        -webkit-transform: translate3d(0, 25px, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      ">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content of a page when looking
+                        at its layout. The point of using Lorem Ipsum is that it
+                        has a more or less normal distribution.
+                      </p>
+                      <div href="#" data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba505"
+                        class="animated-arrow-button-container-card">
+                        <a href="case-studies/building-a-robust-online-platform-a-web-development-journey.html"
+                          class="animated-arrow-button-container-card-in-page w-inline-block">
+                          <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                            case study
+                          </div>
+                          <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                            <img alt="polygon" loading="lazy"
+                              src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                              class="button-arrow-head" />
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur"></div>
+                      <div class="luminous-borders-solid"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="luminous-borders-container">
+            <div class="luminous-borders-blur"></div>
+            <div class="luminous-borders-solid"></div>
+          </div>
+        </div>
+      </section> -->
+
+      <% } else { %>
+        <section class="hero-container min-height" style="background-color: #1e1e1e">
+          <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: #1e1e1e;">
+            <canvas id="myCanvas"></canvas>
+            <div class="heading">
+              <h1 class="title"
+                style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">
+                ACM<br>MITB
+                CHAPTER</h1>
+            </div>
+          </div>
+          <script>
+            const canvas = document.getElementById('myCanvas')
+            const c1 = canvas.getContext('2d')
+
+            let mouseX1
+            let mouseY1
+
+            canvas.height = document.getElementById("canvasParent").clientHeight;
+            canvas.width = document.getElementById("canvasParent").clientWidth;
+
+            const canvasWidth1 = canvas.width
+            const canvasHeight1 = canvas.height
+
+            const maxRadius1 = 60
+
+            canvas.onmousemove = function (e) {
+              mouseX1 = e.clientX
+              mouseY1 = e.clientY
+            }
+
+            window.addEventListener('resize', function () {
+              canvas.height = document.getElementById("canvasParent").clientHeight;
+              canvas.width = document.getElementById("canvasParent").clientWidth;
+            })
+
+            function Circle(xCoordinate, yCoordinate, radius) {
+              const randomNumber = Math.floor(Math.random() * 4)
+              const randomTrueOrFalse = Math.floor(Math.random() * 2)
+
+              this.xCoordinate = xCoordinate
+              this.yCoordinate = yCoordinate
+              this.radius = radius
+              this.color = colorArray1[randomNumber]
+
+              if (randomTrueOrFalse == 1) {
+                this.xVelocity = -Math.random() * 1
+              } else {
+                this.xVelocity = Math.random() * 1
+              }
+
+              if (randomTrueOrFalse == 1) {
+                this.yVelocity = -Math.random() * 1
+              } else {
+                this.yVelocity = Math.random() * 1
+              }
+
+              // As distance gets closer to 0, increase radius
+
+              this.update = function () {
+                this.xCoordinate += this.xVelocity
+                const xDistance = mouseX1 - this.xCoordinate
+                const yDistance = mouseY1 - this.yCoordinate
+                const originalRadius = radius
+                this.yCoordinate += this.yVelocity
+
+                // Movement Functions
+                if (
+                  this.xCoordinate + this.radius > canvasWidth1 ||
+                  this.xCoordinate - this.radius < 0
+                ) {
+                  this.xVelocity = -this.xVelocity
+                }
+                if (
+                  this.yCoordinate + this.radius > canvasHeight1 ||
+                  this.yCoordinate - this.radius < 0
+                ) {
+                  this.yVelocity = -this.yVelocity
+                }
+
+                // Radius Decrease Functions
+                // When distance between circle center and mouse on horizontal axis is less than 50, increase radius until it is equal to 35
+                if (
+                  xDistance < 50 &&
+                  xDistance > -50 &&
+                  this.radius < maxRadius1 &&
+                  yDistance < 50 &&
+                  yDistance > -50
+                ) {
+                  this.radius += 2
+                } else if (
+                  (xDistance >= 50 && originalRadius < this.radius) ||
+                  (xDistance <= -50 && originalRadius < this.radius) ||
+                  (yDistance >= 50 && originalRadius < this.radius) ||
+                  (yDistance <= -50 && originalRadius < this.radius)
+                ) {
+                  this.radius -= 2
+                }
+
+                this.draw()
+              }
+
+              this.draw = function () {
+                //c.beginPath()
+                //c.arc(
+                //  this.xCoordinate,
+                //  this.yCoordinate,
+                //  Math.abs(this.radius),
+                //  0,
+                //  Math.PI * 2
+                //)
+                //c.fillStyle = this.color
+                //c.fill()
+                c1.save(); // Save the current state of the context
+                c1.beginPath();
+                c1.translate(this.xCoordinate + this.radius / 2, this.yCoordinate + this.radius / 2); // Translate to the c1enter of the square
+                c1.rotate((Math.PI / 180) * 45); // Rotate by 45 degrees (or any other desired angle)
+                c1.roundRect(-this.radius / 2, -this.radius / 2, Math.abs(this.radius), Math.abs(this.radius), Math.abs(this.radius / 4)); // Draw the square from the center
+                c1.fillStyle = this.color
+                c1.fill();
+                //c.lineWidth = 10;
+                //c.lineJoin = "round";
+                //c.strokeStyle = this.color;
+                //c.stroke();
+                c1.restore();
+              }
+            }
+
+            const colorArray1 = ['#1d6bff', '#1d6bff', '#ff6725', '#ff6725']
+            const myCircle1 = new Circle(30, 80, 10)
+            let circleArray1 = []
+
+            for (let i = 0; i < 900; i++) {
+              const randomXCoordinate = Math.random() * canvasWidth1
+              const randomYCoordinate = Math.random() * canvasHeight1
+              const randomRadius = Math.random() * 12
+              circleArray1.push(
+                new Circle(randomXCoordinate, randomYCoordinate, randomRadius)
+              )
+            }
+
+            function updateAll() {
+              c1.clearRect(0, 0, canvasWidth1, canvasHeight1)
+              myCircle1.update()
+              for (let i = 0; i < circleArray1.length; i++) {
+                circleArray1[i].update()
+              }
+              window.requestAnimationFrame(updateAll)
+            }
+
+            updateAll()
+
+          </script>
+        </section>
+        <section class="relative-container" id="About">
+          <div class="container w-container">
+            <div class="welcom-container">
+              <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+                data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="overline white">About ACM</h2>
+                </div>
+              </div>
+              <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+                <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="welcom-text">
+                  Established in 1947, the Association for Computing Machinery (ACM)
+                  is a cornerstone in the world of computing and technology. Its
+                  extensive membership, including academics, researchers,
+                  practitioners, and students, fosters idea exchange and best
+                  practices. ACM's legacy is showcased through conferences,
+                  workshops, and symposia, providing a platform for experts to
+                  present research, discuss trends, and connect globally. Central to
+                  ACM's influence are its Special Interest Groups (SIGs), covering
+                  diverse computing disciplines. These SIGs organize events, publish
+                  journals, and nurture communities dedicated to advancing
+                  knowledge. Additionally, ACM promotes ethical standards and
+                  professional conduct, offering resources on topics like
+                  responsible AI and cybersecurity. Through this multifaceted
+                  approach, ACM leads in driving innovation and collaboration in
+                  computing.
+                </p>
+                <div class="overlay-animation-text-reveal-opacity">
+                  <div class="noise-background-copy"></div>
+                </div>
+              </div>
+            </div>
+            <div class="luminous-borders-container-copy">
+              <div class="luminous-borders-blur-copy"></div>
+              <div class="luminous-borders-solid-copy"></div>
+            </div>
+          </div>
+          <div class="noise-background"></div>
+          <div class="white-background"></div>
+        </section>
+        <section class="relative-container">
+          <div class="container w-container">
+            <div class="welcom-container">
+              <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+                <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="welcom-text">
+                  The ACM chapter at Manipal Institute of Technology, Bengaluru, is
+                  a dynamic community for computing enthusiasts & students. With a
+                  dedicated focus on technology advancement, it thrives within the
+                  Manipal Institute of Technology campus. By uniting diverse
+                  students, faculty, and industry experts, the chapter encourages
+                  collaboration and vibrant idea exchange. Through workshops,
+                  seminars & Activities the ACM chapter offers members hands-on
+                  experience with cutting-edge technologies. These events not only
+                  showcase skills but also foster a dynamic learning environment
+                  where participants learn from one another. Introducing SIG-AI,
+                  SIG-SOFT, and ACM-W. These groups will focus on artificial
+                  intelligence, software engineering, and support for women in
+                  computing. We're committed to ethical standards and responsible AI
+                  use. Together, we're shaping the future of computing in the
+                  region.
+                </p>
+                <div class="overlay-animation-text-reveal-opacity">
+                  <div class="noise-background-copy"></div>
+                </div>
+              </div>
+              <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+                data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="overline white position-right">ACM @ MIT-BLR</h2>
+                </div>
+              </div>
+            </div>
+            <div class="luminous-borders-container-copy">
+              <div class="luminous-borders-blur-copy"></div>
+              <div class="luminous-borders-solid-copy"></div>
+            </div>
+          </div>
+          <div class="noise-background"></div>
+          <div class="white-background"></div>
+        </section>
+        <section class="relative-container">
+          <div class="container w-container">
+            <div class="welcom-container">
+              <div id="w-node-_0facef01-944c-8304-862a-8572b776da23-a467c499"
+                data-w-id="0facef01-944c-8304-862a-8572b776da23" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="overline white">Benefits of ACM</h2>
+                </div>
+              </div>
+              <div data-w-id="0facef01-944c-8304-862a-8572b776da27" class="animation-text-reveal-opacity">
+                <p data-w-id="0facef01-944c-8304-862a-8572b776da28" style="
+                text-align:justify;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="welcom-text">
+                  Being a part of the ACM Student Chapter at Manipal Institute of
+                  Technology, Bengaluru opens up a world of opportunities for
+                  students. You'll have access to a community of like-minded peers,
+                  engaging in workshops, seminars, and networking events. These
+                  experiences provide invaluable hands-on exposure to cutting-edge
+                  technologies and connections with industry professionals.
+                  Additionally, membership grants access to a wealth of educational
+                  resources, enhancing academic and professional development.
+                </p>
+                <div class="overlay-animation-text-reveal-opacity">
+                  <div class="noise-background-copy"></div>
+                </div>
+              </div>
+            </div>
+            <div class="luminous-borders-container-copy">
+              <div class="luminous-borders-blur-copy"></div>
+              <div class="luminous-borders-solid-copy"></div>
+            </div>
+          </div>
+          <div class="noise-background"></div>
+          <div class="white-background"></div>
+        </section>
+        <section id="Events">
+          <div class="w-layout-blockcontainer container w-container">
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur no-bottom no-top"></div>
+              <div class="luminous-borders-solid no-bottom no-top"></div>
+            </div>
+            <div class="section-title-container">
+              <div data-w-id="42389fd1-6503-0f2a-5d82-99bcc7080892" class="heading-animation-trigger padding">
+                <div style="
+                    -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                      rotateY(0) rotateZ(0) skew(0, 0);
+                  " class="animation-content">
+                  <div class="section-title-blur">Events</div>
+                  <h2 class="section-title-line">Events</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="relative-container">
+          <div class="w-dyn-list">
+            <div role="list" class="blog-cards-list w-dyn-items">
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def"
+                    href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                    class="blog-card-image-link w-inline-block" target="_blank">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="Inauguration 2022" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/Inaugaration_event.png"
+                      sizes="(max-width: 767px) 100vw, 33vw" class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                        class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title" target="_blank">
+                          Inauguration 2022
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        We successfully held our inaugural ceremony on 8th February,
+                        2023 and were delighted to see all of you present. We
+                        heartfully thank you for showing up to our very first event.
+                        The first of many...
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                      data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block" target="_blank">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="https://www.instagram.com/p/Cp-ka0UMcKR/"
+                    class="blog-card-image-link w-inline-block">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="JS Code Along" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/JS_CodeAlong_event.png"
+                      class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/Cp-ka0UMcKR/" class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title">
+                          JavaScript Code-along
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        Thanks to everyone who joined us on our very first event
+                        held on 26th February 2023 wherein we coded along with
+                        @aryan.achyut and @shrinjayeee as they took us through the
+                        very basics of not only JavaScript but HTML, CSS and Open
+                        Source while explaining the code of a calculator.
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/Cp-ka0UMcKR/" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="https://www.instagram.com/p/CrjlJ45KT_z/"
+                    class="blog-card-image-link w-inline-block">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="Tech Crossword" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/Crossword_event.png"
+                      class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/CrjlJ45KT_z/" class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title">
+                          Tech Crossword
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        Join ACM's Tech Crossword for a unique twist on the
+                        traditional crossword! This creative event challenges your
+                        wordplay skills with puns, witty comments, and surprises.
+                        Teams of one to two work together to uncover hidden words in
+                        a fun and competitive environment.
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/CrjlJ45KT_z/" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="https://www.instagram.com/p/CrjlSeMKzNF/"
+                    class="blog-card-image-link w-inline-block">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="Tech Quiz" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/Tech_Quiz_event.png"
+                      class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/CrjlSeMKzNF/" class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title">
+                          Tech Quiz
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        Are you ready to put your tech knowledge to the test? Join
+                        us for an exciting and engaging Tech Quiz, designed to
+                        challenge your understanding of the tech world.
+                        <br />
+                        The Tech Quiz will feature a team format, with teams of two
+                        members competing against each other. The quiz will include
+                        a mix of inquisitive questions, rapid-fire rounds, and
+                        interactive challenges, all designed to test your tech
+                        knowledge and problem-solving skills.
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/CrjlSeMKzNF/" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="https://www.instagram.com/p/CrjlWTkKysr/"
+                    class="blog-card-image-link w-inline-block">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="Tech Debate" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/Tech_Debate_event.png"
+                      class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/CrjlWTkKysr/" class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title">
+                          Tech Debate
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        The Tech Debate, proudly presented by ACM, is an
+                        electrifying event that invites tech enthusiasts to engage
+                        in a thrilling battle of wits and ideas. This event offers a
+                        unique platform for participants to express their opinions,
+                        share their perspectives, and engage in healthy debates on a
+                        wide range of technology-related topics.
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/CrjlWTkKysr/" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="listitem" class="w-dyn-item">
+                <div class="blog-card-post-container">
+                  <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                    data-w-id="ab834a86-c962-a4c8-91c5-761156414def" href="https://www.instagram.com/p/CxXii5krA3s/"
+                    class="blog-card-image-link w-inline-block">
+                    <div class="luminous-borders-container z-index-1">
+                      <div class="luminous-borders-blur blog-card-image"></div>
+                      <div class="luminous-borders-solid blog-card-image"></div>
+                    </div>
+                    <img alt="DSA Code Along" loading="lazy"
+                      src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/Images_Events/DSA_Code_Along_event.png"
+                      class="blog-card-image" />
+                  </a>
+                  <div class="blog-card-text-container">
+                    <div class="blog-post-card-text-container">
+                      <a href="https://www.instagram.com/p/CxXii5krA3s/" class="w-inline-block">
+                        <h3 data-w-id="ab834a86-c962-a4c8-91c5-761156414df9" style="
+                            opacity: 0;
+                            -webkit-transform: translate3d(0, 25px, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="blog-post-card-title">
+                          DSA Code-along
+                        </h3>
+                      </a>
+                      <p data-w-id="ab834a86-c962-a4c8-91c5-761156414dfa" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="text-md">
+                        Calling all coding enthusiasts! Sharpen your skills with our
+                        Data Structures and Algorithms in C++ workshop. Don’t miss
+                        out!
+                      </p>
+                    </div>
+                    <a href="https://www.instagram.com/p/CxXii5krA3s/" data-w-id="ab834a86-c962-a4c8-91c5-761156414dfb"
+                      class="animated-arrow-button-blog-post-card w-inline-block">
+                      <div class="animated-arrow-button-container">
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                          See more
+                        </div>
+                        <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                          <img alt="polygon" loading="lazy"
+                            src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                            class="button-arrow-head" />
+                        </div>
+                      </div>
+                    </a>
+                    <div class="luminous-borders-container">
+                      <div class="luminous-borders-blur blog-card-text"></div>
+                      <div class="luminous-borders-solid blog-card-text"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="blog-post-container-line">
+            <div class="luminous-borders-blur only-right"></div>
+            <div class="luminous-borders-solid only-right"></div>
+          </div>
+          <div class="blog-post-container-line-left">
+            <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+            <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+          </div>
+        </section>
+        <section class="cta-section">
+          <div class="luminous-borders-container">
+            <div class="luminous-borders-blur no-bottom"></div>
+            <div class="luminous-borders-solid no-bottom"></div>
+          </div>
+          <div class="container w-container">
+            <div class="cta-container">
+              <div class="cta-title-container">
+                <div class="cta-title-decoration-container">
+                  <div data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c4" class="cta-decor-blur"></div>
+                  <div data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c5" class="cta-decor-solid"></div>
+                </div>
+                <a class="explore" href="/events">
+                  <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte"><strong>Explore our past
+                      events -></strong> 
+                  </h2>
+                </a>
+              </div>
+              <div class="cta-text-container">
+              </div>
+            </div>
+          </div>
+          <div class="noise-background"></div>
+          <div class="white-background"></div>
+        </section>
+        <section id="Constituents">
+          <div class="w-layout-blockcontainer container w-container">
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur no-bottom"></div>
+              <div class="luminous-borders-solid no-bottom"></div>
+            </div>
+            <div class="section-title-container">
+              <div data-w-id="3ebe3780-305e-0a7b-1df5-f765eecef760" class="heading-animation-trigger padding">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="section-title-line">CONSTITUENTS</h2>
+                  <div class="section-title-blur">CONSTITUENTS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="process-card-list-container">
+            <div id="w-node-_681334c6-0e0b-815f-54cd-98cb10937ca3-a467c499"
+              data-w-id="681334c6-0e0b-815f-54cd-98cb10937ca3" class="process-card-container">
+              <div data-w-id="9f9e2e21-0349-6f6b-4fb6-955983df6f72" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="process-card-title">ACM</h2>
+                </div>
+              </div>
+              <p data-w-id="65794c6c-41c1-7e2a-5fe1-586987fe2b7b" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+            " class="text-md">
+                Established in 1947, the Association for Computing Machinery (ACM)
+                is a cornerstone in the world of computing and technology. Its
+                extensive membership, including academics, researchers,
+                practitioners, and students, fosters idea exchange and best
+                practices.
+              </p>
+              <div style="height: 0%" class="process-card-decor"></div>
+              <div class="process-card-decor blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur"></div>
+                <div class="luminous-borders-solid"></div>
+              </div>
+            </div>
+            <div id="w-node-_3fdfb9fa-cbce-776f-99b2-0f4c5772c9f2-a467c499"
+              data-w-id="3fdfb9fa-cbce-776f-99b2-0f4c5772c9f2" class="process-card-container">
+              <div data-w-id="7c5eaf8b-741f-5da8-3a7c-5528d91f494d" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="process-card-title">ACM-W</h2>
+                </div>
+              </div>
+              <p data-w-id="3fdfb9fa-cbce-776f-99b2-0f4c5772c9f5" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+            " class="text-md">
+                ACM-W is an initiative within ACM supporting and advocating for
+                women in computing, providing networking, mentorship, and
+                professional development opportunities.
+              </p>
+              <div style="height: 0%" class="process-card-decor"></div>
+              <div class="process-card-decor blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur"></div>
+                <div class="luminous-borders-solid"></div>
+              </div>
+            </div>
+            <div id="w-node-cf2796e4-b767-de8a-174e-2fad9869da65-a467c499"
+              data-w-id="cf2796e4-b767-de8a-174e-2fad9869da65" class="process-card-container">
+              <div data-w-id="fee2f438-b64e-e83e-a68b-90faea0fdaa1" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="process-card-title">SIG-AI</h2>
+                </div>
+              </div>
+              <p data-w-id="cf2796e4-b767-de8a-174e-2fad9869da68" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+            " class="text-md">
+                SIG-AI, a segment of ACM, is a community focused on the realm of
+                artificial intelligence. It provides a forum for students to
+                collaborate and advance the field of AI.
+              </p>
+              <div style="height: 0%" class="process-card-decor"></div>
+              <div class="process-card-decor blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur"></div>
+                <div class="luminous-borders-solid"></div>
+              </div>
+            </div>
+            <div id="w-node-d313a666-c9e8-57c2-98e6-6f9455449f92-a467c499"
+              data-w-id="d313a666-c9e8-57c2-98e6-6f9455449f92" class="process-card-container">
+              <div data-w-id="94c8f334-8dab-408d-815d-f0683ed292a9" class="heading-animation-trigger">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="process-card-title">SIG-SOFT</h2>
+                </div>
+              </div>
+              <p data-w-id="d313a666-c9e8-57c2-98e6-6f9455449f95" style="
+              opacity: 0;
+              -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+              -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+              transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                rotateY(0) rotateZ(0) skew(0, 0);
+            " class="text-md">
+                SIG-SOFT, a part of ACM, is a community dedicated to software
+                engineering. It serves as a platform for students to collaborate and
+                advance the field of software engineering.
+              </p>
+              <div style="height: 0%" class="process-card-decor"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur"></div>
+                <div class="luminous-borders-solid"></div>
+              </div>
+              <div class="process-card-decor blur"></div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="w-layout-blockcontainer container w-container">
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur no-bottom no-top"></div>
+              <div class="luminous-borders-solid no-bottom no-top"></div>
+            </div>
+            <div class="section-title-container">
+              <div data-w-id="c65270c2-ef24-83fe-1466-6d28b0f42459" class="heading-animation-trigger padding">
+                <div style="
+                -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="animation-content">
+                  <h2 class="section-title-line">Blog ( Coming Soon!! )</h2>
+                  <div class="section-title-blur">Blog ( Coming Soon!! )</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container-services w-container">
+            <div class="services-page-case-study-container" style="filter: blur(10px)">
+              <div id="w-node-_92f1b11f-2e2b-8702-2241-78fd4b8ba4e8-a467c499"
+                class="services-page-case-study-text-contianer">
+                <div class="spacer-0-7em---8px"></div>
+                <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4e9" class="heading-animation-trigger">
+                  <div style="
+                  -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                    rotateY(0) rotateZ(0) skew(0, 0);
+                " class="animation-content">
+                    <h2 class="overline white">CASE STUDY</h2>
+                  </div>
+                </div>
+                <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4ed" class="heading-animation-trigger">
+                  <div style="
+                  -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                    rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0)
+                    rotateY(0) rotateZ(0) skew(0, 0);
+                " class="animation-content">
+                    <h2 class="heading-case-studie">
+                      The Results Speak for Themselves
+                    </h2>
+                  </div>
+                </div>
+                <p data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4f1" style="
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="text-md">
+                  There are many variations of passages of Lorem Ipsum available,
+                  but the majority have suffered alteration in some form, by
+                  injected humour, or randomised words which don&#x27;t look even
+                  slightly believable. If you are going to use a passage of Lorem
+                  Ipsum, you need to be sure there isn&#x27;t anything embarrassing
+                  hidden in the middle of text. All the Lorem Ipsum generators on
+                  the Internet tend to repeat predefined.
+                </p>
+                <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4f3" style="
+                opacity: 0;
+                -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                  rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0)
+                  rotateY(0) rotateZ(0) skew(0, 0);
+              " class="services-page-case-study-buttons-contianer">
+                  <a href="contact.html" class="button-green w-button">Request a quote</a><a href="case-studies.html"
+                    class="button-outline w-button">Browse case studies</a>
+                </div>
+              </div>
+              <div class="w-dyn-list">
+                <div role="list" class="w-dyn-items">
+                  <div role="listitem" class="w-dyn-item">
+                    <div class="glow-cards">
+                      <div class="glow-card-title">
+                        <div class="glow-card-subtitle">
+                          <div data-w-id="451f8241-c6b3-a1d4-f7d0-1da8acfefd2e" style="height: 0%"
+                            class="glow-card-title-icon"></div>
+                          <div data-w-id="aab9e04d-254a-66bf-dfe3-c097ba6f8470" style="height: 0%"
+                            class="glow-card-title-icon blur"></div>
+                        </div>
+                        <div data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba4ff" class="heading-animation-trigger">
+                          <div style="
+                          -webkit-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -ms-transform: translate3d(0, 100%, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="animation-content">
+                            <div class="overline white">BuzzBuzz</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="glow-card-text-container">
+                        <a href="#" class="w-inline-block">
+                          <h2 data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba503" style="
+                          opacity: 0;
+                          -webkit-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -moz-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          -ms-transform: translate3d(0, 25px, 0)
+                            scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                            skew(0, 0);
+                          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                            rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        " class="heading-h5">
+                            Building a Robust Online Platform: A Web Development
+                            Journey
+                          </h2>
+                        </a>
+                        <p data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba504" style="
+                        opacity: 0;
+                        -webkit-transform: translate3d(0, 25px, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      ">
+                          It is a long established fact that a reader will be
+                          distracted by the readable content of a page when looking
+                          at its layout. The point of using Lorem Ipsum is that it
+                          has a more or less normal distribution.
+                        </p>
+                        <div href="#" data-w-id="92f1b11f-2e2b-8702-2241-78fd4b8ba505"
+                          class="animated-arrow-button-container-card">
+                          <a href="case-studies/building-a-robust-online-platform-a-web-development-journey.html"
+                            class="animated-arrow-button-container-card-in-page w-inline-block">
+                            <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="arrow-button-text">
+                              case study
+                            </div>
+                            <div style="
+                            -webkit-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -moz-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            -ms-transform: translate3d(0, 110%, 0)
+                              scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                              skew(0, 0);
+                            transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                              rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                          " class="button-arrow">
+                              <img alt="polygon" loading="lazy"
+                                src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                                class="button-arrow-head" />
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="luminous-borders-container">
+                        <div class="luminous-borders-blur"></div>
+                        <div class="luminous-borders-solid"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur"></div>
+              <div class="luminous-borders-solid"></div>
+            </div>
+          </div>
+        </section>
+        <% } %>
+
+          <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>

@@ -1,0 +1,420 @@
+<% if(!darkMode) { %>
+<div>
+  <!-- <div class="space-nav gradient-border"> -->
+    <!-- <div class="luminous-borders-container"> -->
+      <!-- <div class="luminous-borders-blur no-bottom no-top"></div> -->
+      <!-- <div class="luminous-borders-solid no-bottom no-top"></div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+  <div class="nav-bar-container gradient-border" style="background-color: white; padding: 3px 3px 0px 3px ;">
+    <div class="luminous-borders-container">
+      <!-- <div class="luminous-borders-blur"></div> -->
+      <!-- <div class="luminous-borders-solid"></div> -->
+    </div>
+    <div class="nav-bar-container-box" style="background-color: white;padding-top:1.1rem;padding-bottom:1.1rem;">
+      <a href="#" id="themeToggle" aria-current="page" class="nav-logo-container w-nav-brand w--current">
+        <div class="nav-logoNlottie-arrange">
+          <img src="/images/general/acmXmit-logo.png" loading="lazy" alt="" class="nav-logo" />
+          <dotlottie-player src="https://lottie.host/07b24f8b-c29a-49ac-b36c-cf8004059779/d6gVK3VSm2.json" background="transparent" speed="1" style="width: 120px; height: 120px" direction="1" playMode="bounce" loop autoplay>
+            </dotlottie-player>
+        </div>
+      </a>
+      <script>
+        window.addEventListener('resize', function() {
+            var navLogo = document.getElementById('themeToggle');
+            if (window.innerWidth <= 479) {
+                navLogo.style.borderRight = 'none';
+            } else {
+                navLogo.style.borderRight = '3px solid #1e1e1e';
+            }
+        });
+        </script>
+      <div class="nav-menu-links" style="color: #1e1e1e;">
+        <a href="/" aria-current="page" class="nav-menu-link w-inline-block w--current">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcc7" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Home</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fccc" class="nav-menu-text"style="color: black;">
+                Home<br />
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="#About" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">About Us</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">About Us</div>
+            </div>
+          </div>
+        </a>
+        <a href="/events" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Events</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Events</div>
+            </div>
+          </div>
+        </a>
+        <a href="#Constituents" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">CONSTITUENTS</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">CONSTITUENTS</div>
+            </div>
+          </div>
+        </a>
+        <a href="/team" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Team</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Team</div>
+            </div>
+          </div>
+        </a>
+        <!-- <a href="/comingsoon" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fce0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Gallery</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Gallery</div>
+            </div>
+          </div>
+        </a> -->
+        <!-- <a href="/contact" class="nav-menu-link last w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Contact</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Contact</div>
+            </div>
+          </div>
+        </a> -->
+      </div>
+      <script defer>
+        document.getElementById("themeToggle").addEventListener("click", (event) => {
+          event.preventDefault();
+          fetch("/toggleTheme", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                darkMode: true,
+              }),
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("Theme set to:", data.darkMode);
+              location.reload();
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        });
+      </script>
+      <% if (typeof currentUser !=='undefined' && currentUser) {%>
+      <div class="nav-menu-link last w-inline-block">
+        <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+          <div class="animation-rotate-text-one">
+            <div class="nav-menu-text" style="color: #1e1e1e;">Welcome, <%= currentUser.name %>
+            </div>
+          </div>
+          <a href="/auth/log-out" style="cursor: pointer;">
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logout?</div>
+            </div>
+          </a>
+        </div>
+        </>
+        <% } else { %>
+        <a href="/auth/sign-up" class="nav-menu-link last w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Sign up / Login</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text" style="color: #1e1e1e;">Sign up / Login</div>
+            </div>
+          </div>
+        </a>
+        <% } %>
+        <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf7" class="nav-menu-mobile">
+          <img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50c_menu-alt-white.svg" loading="lazy" alt="" />
+        </div>
+      </div>
+      <div class="luminous-borders-separator-nav-container">
+        <div class="luminous-borders-blur no-bottom no-top"></div>
+        <div class="luminous-borders-solid no-bottom no-top"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-close-button">
+        <div data-w-id="a8370e75-727e-29f6-5bc9-fadbd681af84" class="mobile-menu-close-icon-container">
+          <img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c502_x-icon-white.svg" loading="lazy" alt="" />
+        </div>
+      </div>
+      <div class="mobile-menu-links">
+        <div class="mobile-menu-main-links-container">
+          <a href="/" aria-current="page" class="w-inline-block w--current">
+            <div class="mobile-menu-link-text">Home</div>
+          </a><a href="about.html" class="w-inline-block">
+            <div class="mobile-menu-link-text">About Us</div>
+          </a><a href="/events" class="w-inline-block">
+            <div class="mobile-menu-link-text">Events</div>
+          </a><a href="blog.html" class="w-inline-block">
+            <div class="mobile-menu-link-text">Constituents</div>
+          </a><a href="/team" class="w-inline-block">
+            <div class="mobile-menu-link-text">Team</div>
+          </a>
+          <!-- <a href="pricing.html" class="w-inline-block"> -->
+          <!-- <div class="mobile-menu-link-text">Plans</div> </a>  -->
+          <!-- <a href="case-studies.html" class="w-inline-block"> -->
+          <!-- <div class="mobile-menu-link-text">Case Studies</div> </a> -->
+          <a href="/comingsoon" class="w-inline-block">
+            <div class="mobile-menu-link-text">Gallery</div>
+          </a><a href="/contact" class="w-inline-block">
+            <div class="mobile-menu-link-text">Contact</div>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-nav-line-separator">
+        <div class="mobile-nav-line-separator-solid"></div>
+        <div class="mobile-nav-line-separator-blur"></div>
+      </div>
+      <div class="mobile-menu-social">
+        <div class="mobile-menu-social-links-container">
+          <a href="#" class="nav-menu-text">twitter</a><a href="#" class="nav-menu-text">facebook</a><a href="#" class="nav-menu-text">linkedin</a><a href="#" class="nav-menu-text">instagram</a>
+        </div>
+      </div>
+      <div class="mobile-menu-bg">
+        <div class="mobile-menu-line-decoration"></div>
+        <div class="mobile-menu-line-decoration blur"></div>
+      </div>
+    </div>
+    <div data-w-id="415c2ab1-530d-965e-96c5-3529a5863a58" class="mobile-menu-fixed-bg">
+      <div class="noise-background"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<% } else { %>
+
+<div>
+  <div class="space-nav">
+    <div class="luminous-borders-container">
+      <div class="luminous-borders-blur no-bottom no-top"></div>
+      <div class="luminous-borders-solid no-bottom no-top"></div>
+    </div>
+  </div>
+  <div class="nav-bar-container">
+    <div class="luminous-borders-container">
+      <div class="luminous-borders-blur"></div>
+      <div class="luminous-borders-solid"></div>
+    </div>
+    <div class="nav-bar-container-box">
+      <a href="#" id="themeToggle" aria-current="page" class="nav-logo-container w-nav-brand w--current">
+        <div class="nav-logoNlottie-arrange">
+          <img src="/images/general/acmXmit-logo.png" loading="lazy" alt="" class="nav-logo" />
+          <dotlottie-player src="https://lottie.host/07b24f8b-c29a-49ac-b36c-cf8004059779/d6gVK3VSm2.json" background="transparent" speed="1" style="width: 120px; height: 120px" direction="1" playMode="bounce" loop autoplay>
+            </dotlottie-playe>
+        </div>
+      </a>
+      <div class="nav-menu-links">
+        <a href="/" aria-current="page" class="nav-menu-link w-inline-block w--current">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcc7" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Home</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fccc" class="nav-menu-text">
+                Home<br />
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="#About" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">About Us</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">About Us</div>
+            </div>
+          </div>
+        </a>
+        <a href="/events" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Events</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">Events</div>
+            </div>
+          </div>
+        </a>
+        <a href="#Constituents" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">CONSTITUENTS</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">CONSTITUENTS</div>
+            </div>
+          </div>
+        </a>
+        <a href="/team" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcd8" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Team</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">Team</div>
+            </div>
+          </div>
+        </a>
+        <!-- <a href="/comingsoon" class="nav-menu-link w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fce0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Gallery</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">Gallery</div>
+            </div>
+          </div>
+        </a> -->
+        <!-- <a href="/contact" class="nav-menu-link last w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Contact</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">Contact</div>
+            </div>
+          </div>
+        </a> -->
+      </div>
+      <script defer>
+        document.getElementById("themeToggle").addEventListener("click", (event) => {
+          event.preventDefault();
+          fetch("/toggleTheme", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                darkMode: true,
+              }),
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("Theme set to:", data.darkMode);
+              location.reload();
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        });
+      </script>
+      <% if (typeof currentUser !=='undefined' && currentUser) {%>
+      <div class="nav-menu-link last w-inline-block">
+        <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+          <div class="animation-rotate-text-one">
+            <div class="nav-menu-text">Welcome, <%= currentUser.name %>
+            </div>
+          </div>
+          <a href="/auth/log-out" style="cursor: pointer;">
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logout?</div>
+            </div>
+          </a>
+        </div>
+        </>
+        <% } else { %>
+        <a href="/auth/sign-up" class="nav-menu-link last w-inline-block">
+          <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf0" class="animation-rotate-text-container">
+            <div class="animation-rotate-text-one">
+              <div class="nav-menu-text">Sign up / Login</div>
+            </div>
+            <div class="animation-rotate-text-two">
+              <div class="nav-menu-text">Sign up / Login</div>
+            </div>
+          </div>
+        </a>
+        <% } %>
+        <div data-w-id="4c7d4292-a936-f574-99eb-0d749944fcf7" class="nav-menu-mobile">
+          <img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50c_menu-alt-white.svg" loading="lazy" alt="" />
+        </div>
+      </div>
+      <div class="luminous-borders-separator-nav-container">
+        <div class="luminous-borders-blur no-bottom no-top"></div>
+        <div class="luminous-borders-solid no-bottom no-top"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-close-button">
+        <div data-w-id="a8370e75-727e-29f6-5bc9-fadbd681af84" class="mobile-menu-close-icon-container">
+          <img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c502_x-icon-white.svg" loading="lazy" alt="" />
+        </div>
+      </div>
+      <div class="mobile-menu-links">
+        <div class="mobile-menu-main-links-container">
+          <a href="/" aria-current="page" class="w-inline-block w--current">
+            <div class="mobile-menu-link-text">Home</div>
+          </a><a href="about.html" class="w-inline-block">
+            <div class="mobile-menu-link-text">About Us</div>
+          </a><a href="/events" class="w-inline-block">
+            <div class="mobile-menu-link-text">Events</div>
+          </a><a href="blog.html" class="w-inline-block">
+            <div class="mobile-menu-link-text">Constituents</div>
+          </a><a href="/team" class="w-inline-block">
+            <div class="mobile-menu-link-text">Team</div>
+          </a>
+          <!-- <a href="pricing.html" class="w-inline-block"> -->
+          <!-- <div class="mobile-menu-link-text">Plans</div> </a>  -->
+          <!-- <a href="case-studies.html" class="w-inline-block"> -->
+          <!-- <div class="mobile-menu-link-text">Case Studies</div> </a> -->
+          <a href="/comingsoon" class="w-inline-block">
+            <div class="mobile-menu-link-text">Gallery</div>
+          </a><a href="/contact" class="w-inline-block">
+            <div class="mobile-menu-link-text">Contact</div>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-nav-line-separator">
+        <div class="mobile-nav-line-separator-solid"></div>
+        <div class="mobile-nav-line-separator-blur"></div>
+      </div>
+      <div class="mobile-menu-social">
+        <div class="mobile-menu-social-links-container">
+          <a href="#" class="nav-menu-text">twitter</a><a href="#" class="nav-menu-text">facebook</a><a href="#" class="nav-menu-text">linkedin</a><a href="#" class="nav-menu-text">instagram</a>
+        </div>
+      </div>
+      <div class="mobile-menu-bg">
+        <div class="mobile-menu-line-decoration"></div>
+        <div class="mobile-menu-line-decoration blur"></div>
+      </div>
+    </div>
+    <div data-w-id="415c2ab1-530d-965e-96c5-3529a5863a58" class="mobile-menu-fixed-bg">
+      <div class="noise-background"></div>
+    </div>
+  </div>
+</div>
+<% } %>

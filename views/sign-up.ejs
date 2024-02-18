@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html data-wf-domain="shadows-template.webflow.io" data-wf-page="64d9e7b1693ca5d7a467c49b" data-wf-site="64d9e7b1693ca5d7a467c4b4">
+
+<head>
+  <%- include("../partials/imports.ejs",{title:"Sign Up"}) %>
+</head>
+
+<body class="body-flex">
+  <%- include("../partials/navbar.ejs") %>
+
+  <% if(!darkMode) { %>
+    <section class="relative-container gradient-border" style="background-color: white; margin:3px">
+      <div class="container w-container">
+        <div class="spacer-2-5em---32px"></div>
+        <div class="section-header">
+          <div class="page-header-container">
+            <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9" class="heading-animation-trigger">
+              <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea" class="animation-content">
+                <h2 class="section-subtitle title">SIGN UP</h2>
+              </div>
+            </div>
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <!-- <p data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eee"
+            style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+            class="text-md">Dive into captivating articles, expert advice, and thought-provoking content. Stay current
+            with trends, get actionable tips, and find inspiration. Join our passionate community at Unleashing
+            Insights.</p> -->
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <!-- <div class="luminous-borders-blur no-top"></div> -->
+          <!-- <div class="luminous-borders-solid no-top"></div> -->
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+    </section>
+  
+    <% if(!errors) { %>
+      <section class="relative-container gradient-background" style="min-height: 70vh;">
+        <div class="luminous-borders-container">
+          <!-- <div class="luminous-borders-blur"></div> -->
+          <!-- <div class="luminous-borders-solid"></div> -->
+        </div>
+        <div class="w-dyn-list">
+          <div role="list" class="pricing-grid w-dyn-items">
+            <div role="listitem" class="w-dyn-item"></div>
+            <div role="listitem" class="w-dyn-item">
+              <div class="product-card-container">
+                <div style="padding: 20px 0;">
+                  <div data-w-id="671f0823-c9f2-6e71-cdf7-21666e4b7950" class="contact-form w-form">
+                    <form action="/auth/sign-up" method="post" >
+                      <label for="name">Name</label>
+                      <input type="text" class="moder-form-text-field w-input" style="color: #1e1e1e;" maxlength="256" name="name" data-name="Name" placeholder="Your Name" id="Name" required/>
+                      <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" placeholder="Your Learner Email ID" id="username" required />
+                      <input type="password" class="moder-form-text-field w-input" maxlength="256" name="password" data-name="password" placeholder="Password" id="password" required />
+                      <!-- <textarea id="Message" name="Message" maxlength="5000" data-name="Message" placeholder="Your Message" required="" class="modern-text-area w-input"></textarea> -->
+                      <!-- <input type="submit" value="Submit your Message" data-wait="Please wait..." class="button-contact-us w-button" /> -->
+                      <div class="button-container">
+                        <button class="button-contact-us w-button">Sign Up</button>
+                        <button class="button-contact-us w-button" disabled>OR</button>
+                        <button class="button-contact-us w-button" onclick="location.href='/auth/login'" >Login</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- <div data-w-id="99fe9423-9bf7-914c-5f8b-44728149e6f5" style="width: 100%" class="product-popular"></div> -->
+              <!-- <div data-w-id="9eb661fd-8769-b41d-8b90-3eda92a82289" style="width: 100%" class="product-popular blur"></div> -->
+              <div class="luminous-borders-container">
+                <!-- <div class="luminous-borders-blur plan"></div> -->
+                <!-- <div class="luminous-borders-solid plan"></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% } else { %>
+      <section class="relative-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur"></div>
+          <div class="luminous-borders-solid"></div>
+        </div>
+        <div class="w-dyn-list">
+          <div role="list" class="pricing-grid w-dyn-items">
+            <div role="listitem" class="w-dyn-item"></div>
+            <div role="listitem" class="w-dyn-item">
+              <div class="product-card-container">
+                <div style="padding: 20px 0;">
+                  <div data-w-id="671f0823-c9f2-6e71-cdf7-21666e4b7950" class="contact-form w-form">
+                    <form action="/auth/sign-up" method="post">
+                      <label for="name">Name</label>
+                      <% if(name) { %>
+                        <input type="text" class="moder-form-text-field w-input" maxlength="256" name="name" data-name="Name" value="<%= name %>" id="Name" required/>
+                      <% } else { %>
+                        <input type="text" class="moder-form-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Your Name" id="Name" required/>
+                      <% } %>
+                      <% if(username) { %>
+                        <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" value="<%= username %>" id="username" required />
+                      <% } else { %>
+                        <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" placeholder="Your Learner Email ID" id="username" required />
+                      <% } %>
+                      <input type="password" class="moder-form-text-field w-input" maxlength="256" name="password" data-name="password" placeholder="Password" id="password" required />
+                      <!-- <textarea id="Message" name="Message" maxlength="5000" data-name="Message" placeholder="Your Message" required="" class="modern-text-area w-input"></textarea> -->
+                      <!-- <input type="submit" value="Submit your Message" data-wait="Please wait..." class="button-contact-us w-button" /> -->
+                      <div class="button-container">
+                        <button class="button-contact-us w-button">Sign Up</button>
+                        <button class="button-contact-us w-button" disabled>OR</button>
+                        <button class="button-contact-us w-button" onclick="location.href='/auth/login'" >Login</button>
+                      </div>
+                    </form>
+                    <% if(errors.msg) {%>
+                    <div class="error-message w-form-fail">
+                      <div style="text-align: center;">
+                          <%= errors.msg %>
+                      </div>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="99fe9423-9bf7-914c-5f8b-44728149e6f5" style="width: 100%" class="product-popular"></div>
+              <div data-w-id="9eb661fd-8769-b41d-8b90-3eda92a82289" style="width: 100%" class="product-popular blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur plan"></div>
+                <div class="luminous-borders-solid plan"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% } %>
+  <% } else { %>
+    <section style="margin-top: 30px;">
+      <div class="w-layout-blockcontainer container w-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="section-title-container">
+          <div data-w-id="72cfb6d9-1994-d88a-084a-9c5546b76806" class="heading-animation-trigger padding">
+            <div class="animation-content">
+              <h1 class="section-title-line">Sign Up</h1>
+              <div class="section-title-blur">Sign Up</div>
+            </div>
+          </div>
+        </div>
+        <div class="noise-background"></div>
+        <div class="white-background"></div>
+      </div>
+    </section>
+  
+    <% if(!errors) { %>
+      <section class="relative-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur"></div>
+          <div class="luminous-borders-solid"></div>
+        </div>
+        <div class="w-dyn-list">
+          <div role="list" class="pricing-grid w-dyn-items">
+            <div role="listitem" class="w-dyn-item"></div>
+            <div role="listitem" class="w-dyn-item">
+              <div class="product-card-container">
+                <div style="padding: 20px 0;">
+                  <div data-w-id="671f0823-c9f2-6e71-cdf7-21666e4b7950" class="contact-form w-form">
+                    <form action="/auth/sign-up" method="post">
+                      <label for="name">Name</label>
+                      <input type="text" class="moder-form-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Your Name" id="Name" required/>
+                      <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" placeholder="Your Learner Email ID" id="username" required />
+                      <input type="password" class="moder-form-text-field w-input" maxlength="256" name="password" data-name="password" placeholder="Password" id="password" required />
+                      <!-- <textarea id="Message" name="Message" maxlength="5000" data-name="Message" placeholder="Your Message" required="" class="modern-text-area w-input"></textarea> -->
+                      <!-- <input type="submit" value="Submit your Message" data-wait="Please wait..." class="button-contact-us w-button" /> -->
+                      <div class="button-container">
+                        <button class="button-contact-us w-button">Sign Up</button>
+                        <button class="button-contact-us w-button" disabled>OR</button>
+                        <button class="button-contact-us w-button" onclick="location.href='/auth/login'" >Login</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="99fe9423-9bf7-914c-5f8b-44728149e6f5" style="width: 100%" class="product-popular"></div>
+              <div data-w-id="9eb661fd-8769-b41d-8b90-3eda92a82289" style="width: 100%" class="product-popular blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur plan"></div>
+                <div class="luminous-borders-solid plan"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% } else { %>
+      <section class="relative-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur"></div>
+          <div class="luminous-borders-solid"></div>
+        </div>
+        <div class="w-dyn-list">
+          <div role="list" class="pricing-grid w-dyn-items">
+            <div role="listitem" class="w-dyn-item"></div>
+            <div role="listitem" class="w-dyn-item">
+              <div class="product-card-container">
+                <div style="padding: 20px 0;">
+                  <div data-w-id="671f0823-c9f2-6e71-cdf7-21666e4b7950" class="contact-form w-form">
+                    <form action="/auth/sign-up" method="post">
+                      <label for="name">Name</label>
+                      <% if(name) { %>
+                        <input type="text" class="moder-form-text-field w-input" maxlength="256" name="name" data-name="Name" value="<%= name %>" id="Name" required/>
+                      <% } else { %>
+                        <input type="text" class="moder-form-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Your Name" id="Name" required/>
+                      <% } %>
+                      <% if(username) { %>
+                        <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" value="<%= username %>" id="username" required />
+                      <% } else { %>
+                        <input type="email" class="moder-form-text-field w-input" maxlength="256" name="username" data-name="username" placeholder="Your Learner Email ID" id="username" required />
+                      <% } %>
+                      <input type="password" class="moder-form-text-field w-input" maxlength="256" name="password" data-name="password" placeholder="Password" id="password" required />
+                      <!-- <textarea id="Message" name="Message" maxlength="5000" data-name="Message" placeholder="Your Message" required="" class="modern-text-area w-input"></textarea> -->
+                      <!-- <input type="submit" value="Submit your Message" data-wait="Please wait..." class="button-contact-us w-button" /> -->
+                      <div class="button-container">
+                        <button class="button-contact-us w-button">Sign Up</button>
+                        <button class="button-contact-us w-button" disabled>OR</button>
+                        <button class="button-contact-us w-button" onclick="location.href='/auth/login'" >Login</button>
+                      </div>
+                    </form>
+                    <% if(errors.msg) {%>
+                    <div class="error-message w-form-fail">
+                      <div style="text-align: center;">
+                          <%= errors.msg %>
+                      </div>
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div data-w-id="99fe9423-9bf7-914c-5f8b-44728149e6f5" style="width: 100%" class="product-popular"></div>
+              <div data-w-id="9eb661fd-8769-b41d-8b90-3eda92a82289" style="width: 100%" class="product-popular blur"></div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur plan"></div>
+                <div class="luminous-borders-solid plan"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% } %>
+  <% } %>
+</body>
+
+</html>

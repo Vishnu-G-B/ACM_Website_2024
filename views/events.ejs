@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html data-wf-domain="shadows-template.webflow.io" data-wf-page="64d9e7b1693ca5d7a467c49e"
+  data-wf-site="64d9e7b1693ca5d7a467c4b4">
+
+<head>
+  <%- include("../partials/imports.ejs", {title:"Events"}) %>
+    <style>
+      @media (min-width:992px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea"] {
+          -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911e"] {
+          -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="90aa3815-52a5-9920-33ca-9f8ba6d55c5d"] {
+          width: 0%;
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="aae30953-579d-9edd-131a-ac0fd5f5bd73"] {
+          width: 0%;
+        }
+      }
+
+      @media (max-width:991px) and (min-width:768px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea"] {
+          -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911e"] {
+          -webkit-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+      }
+
+      @media (max-width:767px) and (min-width:480px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911d"] {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9"] {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+      }
+
+      @media (max-width:479px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911d"] {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+
+        html.w-mod-js:not(.w-mod-ix) [data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9"] {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+          transform: translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- <script defer>
+      const elem = document.getElementsByClassName("carousel");
+      //console.log(elem);
+      const flkty = new Flickity(elem, {
+        freeScroll: true,
+        wrapAround: true,
+        autoPlay: true,
+      });
+    </script> -->
+</head>
+
+<body>
+  <%- include("../partials/navbar.ejs") %>
+
+  <% if(!darkMode) { %>
+    <section class="hero-container min-height" style="background-color: white">
+      <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: white;">
+        <canvas id="myCanvas"></canvas>
+        <div class="heading">
+          <h1 class="title"
+            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">EVENTS</h1>
+        </div>
+      </div>
+      <script>
+        const canvas = document.getElementById('myCanvas')
+        const c = canvas.getContext('2d')
+
+        let mouseX
+        let mouseY
+
+        canvas.height = document.getElementById("canvasParent").clientHeight;
+        canvas.width = document.getElementById("canvasParent").clientWidth;
+
+        const canvasWidth = canvas.width
+        const canvasHeight = canvas.height
+
+        const maxRadius = 60
+
+        canvas.onmousemove = function (e) {
+          mouseX = e.clientX
+          mouseY = e.clientY
+        }
+
+        window.addEventListener('resize', function () {
+          canvas.height = document.getElementById("canvasParent").clientHeight;
+          canvas.width = document.getElementById("canvasParent").clientWidth;
+        })
+
+        function Circle(xCoordinate, yCoordinate, radius) {
+          const randomNumber = Math.floor(Math.random() * 4)
+          const randomTrueOrFalse = Math.floor(Math.random() * 2)
+
+          this.xCoordinate = xCoordinate
+          this.yCoordinate = yCoordinate
+          this.radius = radius
+          this.color = colorArray[randomNumber]
+
+          if (randomTrueOrFalse == 1) {
+            this.xVelocity = -Math.random() * 1
+          } else {
+            this.xVelocity = Math.random() * 1
+          }
+
+          if (randomTrueOrFalse == 1) {
+            this.yVelocity = -Math.random() * 1
+          } else {
+            this.yVelocity = Math.random() * 1
+          }
+
+          // As distance gets closer to 0, increase radius
+
+          this.update = function () {
+            this.xCoordinate += this.xVelocity
+            const xDistance = mouseX - this.xCoordinate
+            const yDistance = mouseY - this.yCoordinate
+            const originalRadius = radius
+            this.yCoordinate += this.yVelocity
+
+            // Movement Functions
+            if (
+              this.xCoordinate + this.radius > canvasWidth ||
+              this.xCoordinate - this.radius < 0
+            ) {
+              this.xVelocity = -this.xVelocity
+            }
+            if (
+              this.yCoordinate + this.radius > canvasHeight ||
+              this.yCoordinate - this.radius < 0
+            ) {
+              this.yVelocity = -this.yVelocity
+            }
+
+            // Radius Decrease Functions
+            // When distance between circle center and mouse on horizontal axis is less than 50, increase radius until it is equal to 35
+            if (
+              xDistance < 50 &&
+              xDistance > -50 &&
+              this.radius < maxRadius &&
+              yDistance < 50 &&
+              yDistance > -50
+            ) {
+              this.radius += 2
+            } else if (
+              (xDistance >= 50 && originalRadius < this.radius) ||
+              (xDistance <= -50 && originalRadius < this.radius) ||
+              (yDistance >= 50 && originalRadius < this.radius) ||
+              (yDistance <= -50 && originalRadius < this.radius)
+            ) {
+              this.radius -= 2
+            }
+
+            this.draw()
+          }
+
+          this.draw = function () {
+            //c.beginPath()
+            //c.arc(
+            //  this.xCoordinate,
+            //  this.yCoordinate,
+            //  Math.abs(this.radius),
+            //  0,
+            //  Math.PI * 2
+            //)
+            //c.fillStyle = this.color
+            //c.fill()
+            c.save(); // Save the current state of the context
+            c.beginPath();
+            c.translate(this.xCoordinate + this.radius / 2, this.yCoordinate + this.radius / 2); // Translate to the center of the square
+            c.rotate((Math.PI / 180) * 45); // Rotate by 45 degrees (or any other desired angle)
+            c.roundRect(-this.radius / 2, -this.radius / 2, Math.abs(this.radius), Math.abs(this.radius), Math.abs(this.radius / 4)); // Draw the square from the center
+            c.fillStyle = this.color
+            c.fill();
+            //c.lineWidth = 10;
+            //c.lineJoin = "round";
+            //c.strokeStyle = this.color;
+            //c.stroke();
+            c.restore();
+          }
+        }
+
+        const colorArray = ['#1d6bff', '#1d6bff', '#ff6725', '#ff6725']
+        const myCircle = new Circle(30, 80, 10)
+        let circleArray = []
+
+        for (let i = 0; i < 900; i++) {
+          const randomXCoordinate = Math.random() * canvasWidth
+          const randomYCoordinate = Math.random() * canvasHeight
+          const randomRadius = Math.random() * 12
+          circleArray.push(
+            new Circle(randomXCoordinate, randomYCoordinate, randomRadius)
+          )
+        }
+
+        function updateAll() {
+          c.clearRect(0, 0, canvasWidth, canvasHeight)
+          myCircle.update()
+          for (let i = 0; i < circleArray.length; i++) {
+            circleArray[i].update()
+          }
+          window.requestAnimationFrame(updateAll)
+        }
+
+        updateAll()
+
+      </script>
+    </section>
+    <section class="relative-container gradient-border" style="background-color: white; margin:3px">
+      <div class="container w-container">
+        <div class="spacer-5em---64px"></div>
+        <div class="section-header">
+          <div class="page-header-container">
+            <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9" class="heading-animation-trigger">
+              <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea" class="animation-content">
+                <h2 class="section-subtitle title">Upcoming Events</h2>
+              </div>
+            </div>
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <!-- <p data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eee"
+            style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+            class="text-md">Dive into captivating articles, expert advice, and thought-provoking content. Stay current
+            with trends, get actionable tips, and find inspiration. Join our passionate community at Unleashing
+            Insights.</p> -->
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="spacer-5em---64px"></div>
+      </div>
+    </section>
+    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden; background-color:white;">
+      <div class="carousel" data-flickity='{ 
+      "freeScroll": true, 
+      "wrapAround": true,  
+      "autoPlay":2500,
+      "pageDots":false}' >
+      <% events.forEach(function(event,index) { %>
+        <% if(!event.over) {%>
+        <div role="listitem" class="carousel-cell" style="border: 2px solid #1e1e1e;">
+          <div class="blog-card-post-container">
+            <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+              data-w-id="051912d0-4dad-6793-9193-30fdf284e56e"
+              href=""
+              class="blog-card-image-link w-inline-block" target="_blank">
+              <img alt="" loading="lazy" src="<%= event.imagepath %>"  class="blog-card-image" />
+            </a>
+            <div class="blog-card-text-container">
+              <div class="blog-post-card-text-container">
+                <a href=""
+                  class="w-inline-block" target="_blank">
+                  <h3 data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                      opacity: 0;
+                      -webkit-transform: translate3d(0, 25px, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="blog-post-card-title title" target="_blank">
+                    <%= event.name %>
+                  </h3>
+                </a>
+                <p data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                    opacity: 0;
+                    -webkit-transform: translate3d(0, 25px, 0)
+                      scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                      skew(0, 0);
+                    -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+                  " class="text-md">
+                  <%= event.description %>
+                </p>
+              </div>
+              <a href="<%= event.url %>"
+                data-w-id="25c979bf-53ba-6f2c-3b02-60c1be7ea1d0"
+                class="animated-arrow-button-blog-post-card w-inline-block">
+                <div class="animated-arrow-button-container">
+                  <div style="
+                      -webkit-transform: translate3d(0, 110%, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="arrow-button-text title">
+                    See more ->
+                  </div>
+                </div>
+              </a>
+              <div class="luminous-borders-container">
+                <!-- <div class="luminous-borders-blur blog-card-text"></div> -->
+                <!-- <div class="luminous-borders-solid blog-card-text"></div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% }); %>
+      </div>
+    </div>
+    <section class="relative-container gradient-border" style="background-color: white; margin:3px">
+      <div class="container w-container">
+        <div class="spacer-5em---64px"></div>
+        <div class="section-header">
+          <div class="page-header-container">
+            <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9" class="heading-animation-trigger">
+              <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea" class="animation-content">
+                <h2 class="section-subtitle title">Past Events</h2>
+              </div>
+            </div>
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <!-- <p data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eee"
+            style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+            class="text-md">Dive into captivating articles, expert advice, and thought-provoking content. Stay current
+            with trends, get actionable tips, and find inspiration. Join our passionate community at Unleashing
+            Insights.</p> -->
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="spacer-5em---64px"></div>
+      </div>
+    </section>
+    <section class="relative-container">
+      <div class="w-dyn-list">
+        <div role="list" class="blog-cards-list w-dyn-items" style="background-color: white;">
+
+          <% events.forEach(function(event,index) { %>
+
+            <div role="listitem" class="w-dyn-item" style="border: 2px solid #1e1e1e;">
+              <div class="blog-card-post-container">
+                <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                  data-w-id="051912d0-4dad-6793-9193-30fdf284e56e"
+                  href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                  class="blog-card-image-link w-inline-block" target="_blank">
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur blog-card-image"></div>
+                    <div class="luminous-borders-solid blog-card-image"></div>
+                  </div>
+                  <img alt="<%= event.name  %>" loading="lazy" src="<%= event.imagepath %>"
+                    sizes="(max-width: 767px) 100vw, 33vw" class="blog-card-image" />
+                </a>
+                <div class="blog-card-text-container">
+                  <div class="blog-post-card-text-container">
+                    <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                      class="w-inline-block" target="_blank">
+                      <h3 data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                        opacity: 0;
+                        -webkit-transform: translate3d(0, 25px, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="blog-post-card-title title" target="_blank">
+                        <%= event.name %>
+                      </h3>
+                    </a>
+                    <p data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                      opacity: 0;
+                      -webkit-transform: translate3d(0, 25px, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0); color:#1e1e1e;
+                    " class="text-md">
+                      <%= event.description %>
+                    </p>
+                  </div>
+                  <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                    data-w-id="25c979bf-53ba-6f2c-3b02-60c1be7ea1d0"
+                    class="animated-arrow-button-blog-post-card w-inline-block" target="_blank">
+                    <div class="animated-arrow-button-container">
+                      <div style="
+                        -webkit-transform: translate3d(0, 110%, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="arrow-button-text title">
+                        See more ->
+                      </div>
+                    </div>
+                  </a>
+                  <div class="luminous-borders-container">
+                    <!-- <div class="luminous-borders-blur blog-card-text"></div> -->
+                    <!-- <div class="luminous-borders-solid blog-card-text"></div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+      <div class="blog-post-container-line">
+        <div class="luminous-borders-blur only-right"></div>
+        <div class="luminous-borders-solid only-right"></div>
+      </div>
+      <div class="blog-post-container-line-left">
+        <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+        <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+      </div>
+    </section>
+  <% } else { %>
+    <section style="margin-top: 20px;">
+      <div class="w-layout-blockcontainer container w-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="section-title-container">
+          <div data-w-id="ecd7bc0a-3203-9966-c5fe-d277402bfe88" class="heading-animation-trigger padding">
+            <div
+              style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+              class="animation-content">
+              <h2 class="section-title-line">Events</h2>
+              <div class="section-title-blur">Events</div>
+            </div>
+          </div>
+        </div>
+        <div class="noise-background"></div>
+        <div class="white-background"></div>
+      </div>
+    </section>
+    <section class="relative-container">
+      <div class="container w-container">
+        <div class="spacer-5em---64px"></div>
+        <div class="section-header">
+          <div class="page-header-container">
+            <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2ee9" class="heading-animation-trigger">
+              <div data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eea" class="animation-content">
+                <h2 class="section-subtitle">Upcoming Events</h2>
+              </div>
+            </div>
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <!-- <p data-w-id="0d621e0d-1c1e-271d-fb3f-1dcb78de2eee"
+            style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+            class="text-md">Dive into captivating articles, expert advice, and thought-provoking content. Stay current
+            with trends, get actionable tips, and find inspiration. Join our passionate community at Unleashing
+            Insights.</p> -->
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="spacer-5em---64px"></div>
+      </div>
+    </section>
+    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden;">
+      <div class="carousel" data-flickity='{ 
+      "freeScroll": true, 
+      "wrapAround": true,  
+      "autoPlay":2500,
+      "pageDots":false}' >
+      <% events.forEach(function(event,index) { %>
+        <% if(!event.over) {%>
+        <div role="listitem" class="carousel-cell">
+          <div class="blog-card-post-container">
+            <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+              data-w-id="051912d0-4dad-6793-9193-30fdf284e56e"
+              href=""
+              class="blog-card-image-link w-inline-block" target="_blank">
+              <img alt="" loading="lazy" src="<%= event.imagepath %>"  class="blog-card-image" 
+                    />
+            </a>
+            <div class="blog-card-text-container">
+              <div class="blog-post-card-text-container">
+                <a href=""
+                  class="w-inline-block" target="_blank">
+                  <h3 data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                      opacity: 0;
+                      -webkit-transform: translate3d(0, 25px, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="blog-post-card-title" target="_blank">
+                    <%= event.name %>
+                  </h3>
+                </a>
+                <p data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                    opacity: 0;
+                    -webkit-transform: translate3d(0, 25px, 0)
+                      scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                      skew(0, 0);
+                    -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                      rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                  " class="text-md">
+                  <%= event.description %>
+                </p>
+              </div>
+              <a href="<%= event.url %>"
+                data-w-id="25c979bf-53ba-6f2c-3b02-60c1be7ea1d0"
+                class="animated-arrow-button-blog-post-card w-inline-block">
+                <div class="animated-arrow-button-container">
+                  <div style="
+                      -webkit-transform: translate3d(0, 110%, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="arrow-button-text">
+                    See more
+                  </div>
+                  <div style="
+                      -webkit-transform: translate3d(0, 110%, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="button-arrow">
+                    <img alt="polygon" loading="lazy"
+                      src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                      class="button-arrow-head" />
+                  </div>
+                </div>
+              </a>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur blog-card-text"></div>
+                <div class="luminous-borders-solid blog-card-text"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% }); %>
+      </div>
+    </div>
+    <section class="relative-container">
+      <div class="container w-container">
+        <div class="spacer-4em---48px"></div>
+        <div data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911d" class="heading-animation-trigger">
+          <div data-w-id="574b5b55-ae65-5d35-01a8-cc683d50911e" class="animation-content">
+            <div class="articles-title-container">
+              <div class="overline white">Past Events</div>
+            </div>
+          </div>
+        </div>
+        <div class="spacer-4em---48px"></div>
+        <div class="noise-background"></div>
+        <div class="white-background"></div>
+      </div>
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur no-bottom "></div>
+        <div class="luminous-borders-solid no-bottom "></div>
+      </div>
+    </section>
+    <section class="relative-container">
+      <div class="w-dyn-list">
+        <div role="list" class="blog-cards-list w-dyn-items">
+
+          <% events.forEach(function(event,index) { %>
+
+            <div role="listitem" class="w-dyn-item">
+              <div class="blog-card-post-container">
+                <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
+                  data-w-id="051912d0-4dad-6793-9193-30fdf284e56e"
+                  href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                  class="blog-card-image-link w-inline-block" target="_blank">
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur blog-card-image"></div>
+                    <div class="luminous-borders-solid blog-card-image"></div>
+                  </div>
+                  <img alt="<%= event.name  %>" loading="lazy" src="<%= event.imagepath %>"
+                    sizes="(max-width: 767px) 100vw, 33vw" class="blog-card-image" />
+                </a>
+                <div class="blog-card-text-container">
+                  <div class="blog-post-card-text-container">
+                    <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                      class="w-inline-block" target="_blank">
+                      <h3 data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                        opacity: 0;
+                        -webkit-transform: translate3d(0, 25px, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="blog-post-card-title" target="_blank">
+                        <%= event.name %>
+                      </h3>
+                    </a>
+                    <p data-w-id="051912d0-4dad-6793-9193-30fdf284e56e" style="
+                      opacity: 0;
+                      -webkit-transform: translate3d(0, 25px, 0)
+                        scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                        skew(0, 0);
+                      -moz-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      -ms-transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      transform: translate3d(0, 25px, 0) scale3d(1, 1, 1)
+                        rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                    " class="text-md">
+                      <%= event.description %>
+                    </p>
+                  </div>
+                  <a href="https://www.instagram.com/p/CoplDRQyqvH/?igshid=MjEwN2IyYWYwYw%3D%3D&img_index=1"
+                    data-w-id="25c979bf-53ba-6f2c-3b02-60c1be7ea1d0"
+                    class="animated-arrow-button-blog-post-card w-inline-block" target="_blank">
+                    <div class="animated-arrow-button-container">
+                      <div style="
+                        -webkit-transform: translate3d(0, 110%, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="arrow-button-text">
+                        See more
+                      </div>
+                      <div style="
+                        -webkit-transform: translate3d(0, 110%, 0)
+                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
+                          skew(0, 0);
+                        -moz-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        -ms-transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        transform: translate3d(0, 110%, 0) scale3d(1, 1, 1)
+                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                      " class="button-arrow">
+                        <img alt="polygon" loading="lazy"
+                          src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4fe_Polygon.svg"
+                          class="button-arrow-head" />
+                      </div>
+                    </div>
+                  </a>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur blog-card-text"></div>
+                    <div class="luminous-borders-solid blog-card-text"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+      <div class="blog-post-container-line">
+        <div class="luminous-borders-blur only-right"></div>
+        <div class="luminous-borders-solid only-right"></div>
+      </div>
+      <div class="blog-post-container-line-left">
+        <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+        <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+      </div>
+    </section>
+  <% } %>
+
+  <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>

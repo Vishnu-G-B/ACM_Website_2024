@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html data-wf-domain="shadows-template.webflow.io" data-wf-page="64d9e7b1693ca5d7a467c49c" data-wf-site="64d9e7b1693ca5d7a467c4b4">
+
+<head>
+  <%- include("../partials/imports.ejs", {title:"Our Team"}) %>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</head>
+
+<body>
+  <%- include("../partials/navbar.ejs") %>
+
+  <% if(!darkMode) {%>
+    <section class="hero-container min-height" style="background-color: white">
+      <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: white;">
+        <canvas id="myCanvas"></canvas>
+        <div class="heading">
+          <h1 class="title"
+            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">OFFICE BEARERS</h1>
+        </div>
+      </div>
+      <script>
+        const canvas = document.getElementById('myCanvas')
+        const c = canvas.getContext('2d')
+
+        let mouseX
+        let mouseY
+
+        canvas.height = document.getElementById("canvasParent").clientHeight;
+        canvas.width = document.getElementById("canvasParent").clientWidth;
+
+        const canvasWidth = canvas.width
+        const canvasHeight = canvas.height
+
+        const maxRadius = 60
+
+        canvas.onmousemove = function (e) {
+          mouseX = e.clientX
+          mouseY = e.clientY
+        }
+
+        window.addEventListener('resize', function () {
+          canvas.height = document.getElementById("canvasParent").clientHeight;
+          canvas.width = document.getElementById("canvasParent").clientWidth;
+        })
+
+        function Circle(xCoordinate, yCoordinate, radius) {
+          const randomNumber = Math.floor(Math.random() * 4)
+          const randomTrueOrFalse = Math.floor(Math.random() * 2)
+
+          this.xCoordinate = xCoordinate
+          this.yCoordinate = yCoordinate
+          this.radius = radius
+          this.color = colorArray[randomNumber]
+
+          if (randomTrueOrFalse == 1) {
+            this.xVelocity = -Math.random() * 1
+          } else {
+            this.xVelocity = Math.random() * 1
+          }
+
+          if (randomTrueOrFalse == 1) {
+            this.yVelocity = -Math.random() * 1
+          } else {
+            this.yVelocity = Math.random() * 1
+          }
+
+          // As distance gets closer to 0, increase radius
+
+          this.update = function () {
+            this.xCoordinate += this.xVelocity
+            const xDistance = mouseX - this.xCoordinate
+            const yDistance = mouseY - this.yCoordinate
+            const originalRadius = radius
+            this.yCoordinate += this.yVelocity
+
+            // Movement Functions
+            if (
+              this.xCoordinate + this.radius > canvasWidth ||
+              this.xCoordinate - this.radius < 0
+            ) {
+              this.xVelocity = -this.xVelocity
+            }
+            if (
+              this.yCoordinate + this.radius > canvasHeight ||
+              this.yCoordinate - this.radius < 0
+            ) {
+              this.yVelocity = -this.yVelocity
+            }
+
+            // Radius Decrease Functions
+            // When distance between circle center and mouse on horizontal axis is less than 50, increase radius until it is equal to 35
+            if (
+              xDistance < 50 &&
+              xDistance > -50 &&
+              this.radius < maxRadius &&
+              yDistance < 50 &&
+              yDistance > -50
+            ) {
+              this.radius += 2
+            } else if (
+              (xDistance >= 50 && originalRadius < this.radius) ||
+              (xDistance <= -50 && originalRadius < this.radius) ||
+              (yDistance >= 50 && originalRadius < this.radius) ||
+              (yDistance <= -50 && originalRadius < this.radius)
+            ) {
+              this.radius -= 2
+            }
+
+            this.draw()
+          }
+
+          this.draw = function () {
+            //c.beginPath()
+            //c.arc(
+            //  this.xCoordinate,
+            //  this.yCoordinate,
+            //  Math.abs(this.radius),
+            //  0,
+            //  Math.PI * 2
+            //)
+            //c.fillStyle = this.color
+            //c.fill()
+            c.save(); // Save the current state of the context
+            c.beginPath();
+            c.translate(this.xCoordinate + this.radius / 2, this.yCoordinate + this.radius / 2); // Translate to the center of the square
+            c.rotate((Math.PI / 180) * 45); // Rotate by 45 degrees (or any other desired angle)
+            c.roundRect(-this.radius / 2, -this.radius / 2, Math.abs(this.radius), Math.abs(this.radius), Math.abs(this.radius / 4)); // Draw the square from the center
+            c.fillStyle = this.color
+            c.fill();
+            //c.lineWidth = 10;
+            //c.lineJoin = "round";
+            //c.strokeStyle = this.color;
+            //c.stroke();
+            c.restore();
+          }
+        }
+
+        const colorArray = ['#1d6bff', '#1d6bff', '#ff6725', '#ff6725']
+        const myCircle = new Circle(30, 80, 10)
+        let circleArray = []
+
+        for (let i = 0; i < 900; i++) {
+          const randomXCoordinate = Math.random() * canvasWidth
+          const randomYCoordinate = Math.random() * canvasHeight
+          const randomRadius = Math.random() * 12
+          circleArray.push(
+            new Circle(randomXCoordinate, randomYCoordinate, randomRadius)
+          )
+        }
+
+        function updateAll() {
+          c.clearRect(0, 0, canvasWidth, canvasHeight)
+          myCircle.update()
+          for (let i = 0; i < circleArray.length; i++) {
+            circleArray[i].update()
+          }
+          window.requestAnimationFrame(updateAll)
+        }
+
+        updateAll()
+
+      </script>
+    </section>
+    <section>
+      <div class="w-layout-blockcontainer container w-container gradient-border" style="background-color: #ffffff; margin:3px">
+        <div class="luminous-borders-container">
+          <!-- <div class="luminous-borders-blur no-top"></div> -->
+          <!-- <div class="luminous-borders-solid no-top"></div> -->
+        </div>
+        <div class="section-title-container">
+          <div data-w-id="7a69b502-a1af-943a-cd9d-8daa9728d955" class="heading-animation-trigger padding">
+            <div
+              style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+              class="animation-content">
+              <h2 class="overline title">Office Bearers (2023-24) </h2>
+              <!-- <div class="section-title-blur">Office Bearers (2023-24)</div> -->
+            </div>
+          </div>
+        </div>
+        <!-- <div class="noise-background"></div> -->
+        <!-- <div class="white-background"></div> -->
+      </div>
+    </section>
+    <section class="relative-container ">
+      <div id="w-node-_2d4f6a12-2360-9c7a-e773-30952a9d27b1-a467c49c" class="w-dyn-list" style="background-color: #ffffff;">
+        <div role="list" class="team-container" style="overflow-x: hidden;">
+          <div class="carousel-team" data-flickity='{ 
+                    "freeScroll": true, 
+                    "wrapAround": true,  
+                    "autoPlay":2500,
+                    "pageDots":false}'>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/DR_GHL_2.png" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text" >
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Faculty Sponsor</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Dr. Gururaj H L</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <!-- <div class="luminous-borders-blur team-card-text"></div> -->
+                    <!-- <div class="luminous-borders-solid team-card-text"></div> -->
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Dr.Shreyas.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Faculty Sponsor</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Dr. Shreyas J</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/IMG_1411_VEDANG RAHUL PATIL.jpeg"
+                    class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Chair</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Vedang Patil</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/p1_PARTH BHATNAGAR.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Vice Chair</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Parth Bhatnagar</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Prince_Mathur.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Secretary</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Prince Mathur</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/VISHNU_G_B.png" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Webmaster</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Vishnu Bhattacharya</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/SAURABH_KUMAR.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Treasurer</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Saurabh Kumar</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Nishant_Tripathi.jpeg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Nishant Tripathi</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Arnab_Jena.png" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Arnab Jena</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Aishvi_Bansal.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Aishvi Bansal</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/Shivansh_Gautam.jpg" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div daa-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div>
+                      <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+                    </div>
+                  </div>
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                    <div>
+                      <div class="heading-h4 semibold title">Shivansh Gautam</div>
+                    </div>
+                  </div>
+                  <div class="luminous-borders-container">
+                    <div class="luminous-borders-blur team-card-text"></div>
+                    <div class="luminous-borders-solid team-card-text"></div>
+                  </div>
+                  <div class="spacer-2-5em---32px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-post-container-line">
+        <!-- <div class="luminous-borders-blur only-right"></div> -->
+        <!-- <div class="luminous-borders-solid only-right"></div> -->
+      </div>
+      <div class="team-post-container-line-left">
+        <!-- <div class="luminous-borders-blur no-bottom no-top no-right"></div> -->
+        <!-- <div class="luminous-borders-solid no-bottom no-top no-right"></div> -->
+      </div>
+    </section>
+    <section class="relative-container gradient-border" style="background-color: #ffffff; margin:3px;">
+      <div class="container w-container">
+        <div class="spacer-2-5em---32px"></div>
+        <div class="section-header">
+          <div class="fa-icon-container">
+            <button style="background-color:transparent;" onclick="togglehiddensection()">
+              <i class="fa-solid fa-plus fa-4x title"></i>
+            </button>
+          </div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur"></div>
+        <div class="luminous-borders-solid "></div>
+      </div>
+    </section>
+    <script defer>
+      function togglehiddensection() {
+        let collapsible1 = document.getElementById("collapsible1");
+        let collapsible2 = document.getElementById("collapsible2");
+        //collapsible1.classList.toggle("hide");
+        //collapsible2.classList.toggle("hide");
+        collapsible1.classList.toggle("show");
+        collapsible2.classList.toggle("show");
+      }
+    </script>
+    <section id="collapsible1" class="hide" style="transition: all 300ms;">
+      <div class="w-layout-blockcontainer container w-container gradient-border" style="background-color: #ffffff; margin:3px; margin-top:0;">
+        <div class="luminous-borders-container">
+          <!-- <div class="luminous-borders-blur no-top"></div> -->
+          <!-- <div class="luminous-borders-solid no-top"></div> -->
+        </div>
+        <div class="section-title-container">
+          <div data-w-id="7a69b502-a1af-943a-cd9d-8daa9728d955" class="heading-animation-trigger padding">
+            <div
+              style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+              class="animation-content">
+              <h2 class="overline title">Office Bearers (2022-23) </h2>
+              <!-- <div class="section-title-blur">Office Bearers (2023-24)</div> -->
+            </div>
+          </div>
+        </div>
+        <!-- <div class="noise-background"></div> -->
+        <!-- <div class="white-background"></div> -->
+      </div>
+    </section>
+    <section class="relative-container hide" id="collapsible2" style="transition: all 300ms;">
+      <div id="w-node-_2d4f6a12-2360-9c7a-e773-30952a9d27b1-a467c49c" class="w-dyn-list" style="background-color: white;">
+        <div role="list" class="team-container">
+          <div class="carousel-team" data-flickity='{ 
+          "freeScroll": true, 
+          "wrapAround": true,  
+          "autoPlay":2500,
+          "pageDots":false}'>
+            <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+              <div class="team-member-container">
+                <div class="team-image-container">
+                  <img loading="lazy" alt="" src="/images/team/DR_GHL.png" class="team-member-image" />
+                  <div class="luminous-borders-container z-index-1">
+                    <div class="luminous-borders-blur team-card-image"></div>
+                    <div class="luminous-borders-solid team-card-image"></div>
+                  </div>
+                </div>
+                <div class="team-member-container-text">
+                  <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                    <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Faculty Sponsor</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div >
+                  <div class="heading-h4 semibold title">Dr. Gururaj H L</div>
+                </div>
+              </div>
+              <div class="luminous-borders-container">
+                <div class="luminous-borders-blur team-card-text"></div>
+                <div class="luminous-borders-solid team-card-text"></div>
+              </div>
+              <div class="spacer-2-5em---32px"></div>
+            </div>
+          </div>
+        </div>
+        <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+          <div class="team-member-container">
+            <div class="team-image-container">
+              <img loading="lazy" alt="" src="/images/team/Dr.RashmiR.jpg" class="team-member-image" />
+              <div class="luminous-borders-container z-index-1">
+                <div class="luminous-borders-blur team-card-image"></div>
+                <div class="luminous-borders-solid team-card-image"></div>
+              </div>
+            </div>
+            <div class="team-member-container-text">
+              <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Faculty Sponsor</div>
+              </div>
+            </div>
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+              <div >
+                  <div class="heading-h4 semibold title">Dr. Rashmi</div>
+            </div>
+          </div>
+          <div class="luminous-borders-container">
+            <div class="luminous-borders-blur team-card-text"></div>
+            <div class="luminous-borders-solid team-card-text"></div>
+          </div>
+          <div class="spacer-2-5em---32px"></div>
+        </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/advay_22_23.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Chair</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Advay</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/A_Aryan.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Vice Chair</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Achyut Aryan</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Shrinjayee_Dutta.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Secretary</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Shrinjayee</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Shashank_Pandey.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Treasurer</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Shashank</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Prakhar_Khurana.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">WebMaster</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Prakhar</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Aditya_C.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Aditya</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Vedang_P.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div >
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div >
+                  <div class="heading-h4 semibold title">Vedang</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Sreya.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div>
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div>
+                  <div class="heading-h4 semibold title">Sreya</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Kartik_A.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div "  >
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div "  >
+                  <div class="heading-h4 semibold title">Kartik</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Divya_A.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div "  >
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div "  >
+                  <div class="heading-h4 semibold title">Divya</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team" style="border: 2px solid #1e1e1e;">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Prince_M.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div "  >
+                  <div class="overline-small" style="color: #1e1e1e;">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div "  >
+                  <div class="heading-h4 semibold title">Prince</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="team-post-container-line">
+        <div class="luminous-borders-blur only-right"></div>
+        <div class="luminous-borders-solid only-right"></div>
+      </div>
+      <div class="team-post-container-line-left">
+        <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+        <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+      </div>
+    </section>
+  <% } else { %>
+    <section class="hero-container min-height" style="background-color: #1e1e1e">
+      <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: #1e1e1e;">
+        <canvas id="myCanvas"></canvas>
+        <div class="heading">
+          <h1 class="title"
+            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">
+            ACM<br>MITB
+            CHAPTER</h1>
+        </div>
+      </div>
+      <script>
+        const canvas = document.getElementById('myCanvas')
+        const c1 = canvas.getContext('2d')
+
+        let mouseX1
+        let mouseY1
+
+        canvas.height = document.getElementById("canvasParent").clientHeight;
+        canvas.width = document.getElementById("canvasParent").clientWidth;
+
+        const canvasWidth1 = canvas.width
+        const canvasHeight1 = canvas.height
+
+        const maxRadius1 = 60
+
+        canvas.onmousemove = function (e) {
+          mouseX1 = e.clientX
+          mouseY1 = e.clientY
+        }
+
+        window.addEventListener('resize', function () {
+          canvas.height = document.getElementById("canvasParent").clientHeight;
+          canvas.width = document.getElementById("canvasParent").clientWidth;
+        })
+
+        function Circle(xCoordinate, yCoordinate, radius) {
+          const randomNumber = Math.floor(Math.random() * 4)
+          const randomTrueOrFalse = Math.floor(Math.random() * 2)
+
+          this.xCoordinate = xCoordinate
+          this.yCoordinate = yCoordinate
+          this.radius = radius
+          this.color = colorArray1[randomNumber]
+
+          if (randomTrueOrFalse == 1) {
+            this.xVelocity = -Math.random() * 1
+          } else {
+            this.xVelocity = Math.random() * 1
+          }
+
+          if (randomTrueOrFalse == 1) {
+            this.yVelocity = -Math.random() * 1
+          } else {
+            this.yVelocity = Math.random() * 1
+          }
+
+          // As distance gets closer to 0, increase radius
+
+          this.update = function () {
+            this.xCoordinate += this.xVelocity
+            const xDistance = mouseX1 - this.xCoordinate
+            const yDistance = mouseY1 - this.yCoordinate
+            const originalRadius = radius
+            this.yCoordinate += this.yVelocity
+
+            // Movement Functions
+            if (
+              this.xCoordinate + this.radius > canvasWidth1 ||
+              this.xCoordinate - this.radius < 0
+            ) {
+              this.xVelocity = -this.xVelocity
+            }
+            if (
+              this.yCoordinate + this.radius > canvasHeight1 ||
+              this.yCoordinate - this.radius < 0
+            ) {
+              this.yVelocity = -this.yVelocity
+            }
+
+            // Radius Decrease Functions
+            // When distance between circle center and mouse on horizontal axis is less than 50, increase radius until it is equal to 35
+            if (
+              xDistance < 50 &&
+              xDistance > -50 &&
+              this.radius < maxRadius1 &&
+              yDistance < 50 &&
+              yDistance > -50
+            ) {
+              this.radius += 2
+            } else if (
+              (xDistance >= 50 && originalRadius < this.radius) ||
+              (xDistance <= -50 && originalRadius < this.radius) ||
+              (yDistance >= 50 && originalRadius < this.radius) ||
+              (yDistance <= -50 && originalRadius < this.radius)
+            ) {
+              this.radius -= 2
+            }
+
+            this.draw()
+          }
+
+          this.draw = function () {
+            //c.beginPath()
+            //c.arc(
+            //  this.xCoordinate,
+            //  this.yCoordinate,
+            //  Math.abs(this.radius),
+            //  0,
+            //  Math.PI * 2
+            //)
+            //c.fillStyle = this.color
+            //c.fill()
+            c1.save(); // Save the current state of the context
+            c1.beginPath();
+            c1.translate(this.xCoordinate + this.radius / 2, this.yCoordinate + this.radius / 2); // Translate to the c1enter of the square
+            c1.rotate((Math.PI / 180) * 45); // Rotate by 45 degrees (or any other desired angle)
+            c1.roundRect(-this.radius / 2, -this.radius / 2, Math.abs(this.radius), Math.abs(this.radius), Math.abs(this.radius / 4)); // Draw the square from the center
+            c1.fillStyle = this.color
+            c1.fill();
+            //c.lineWidth = 10;
+            //c.lineJoin = "round";
+            //c.strokeStyle = this.color;
+            //c.stroke();
+            c1.restore();
+          }
+        }
+
+        const colorArray1 = ['#1d6bff', '#1d6bff', '#ff6725', '#ff6725']
+        const myCircle1 = new Circle(30, 80, 10)
+        let circleArray1 = []
+
+        for (let i = 0; i < 900; i++) {
+          const randomXCoordinate = Math.random() * canvasWidth1
+          const randomYCoordinate = Math.random() * canvasHeight1
+          const randomRadius = Math.random() * 12
+          circleArray1.push(
+            new Circle(randomXCoordinate, randomYCoordinate, randomRadius)
+          )
+        }
+
+        function updateAll() {
+          c1.clearRect(0, 0, canvasWidth1, canvasHeight1)
+          myCircle1.update()
+          for (let i = 0; i < circleArray1.length; i++) {
+            circleArray1[i].update()
+          }
+          window.requestAnimationFrame(updateAll)
+        }
+
+        updateAll()
+
+      </script>
+    </section>
+  <section>
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur "></div>
+        <div class="luminous-borders-solid "></div>
+      </div>
+      <div class="section-title-container">
+        <div data-w-id="7a69b502-a1af-943a-cd9d-8daa9728d955" class="heading-animation-trigger padding">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <h2 class="section-title-line">Office Bearers (2023-24) </h2>
+            <div class="section-title-blur">Office Bearers (2023-24)</div>
+          </div>
+        </div>
+      </div>
+      <div class="noise-background"></div>
+      <div class="white-background"></div>
+    </div>
+  </section>
+  <section class="relative-container">
+    <div id="w-node-_2d4f6a12-2360-9c7a-e773-30952a9d27b1-a467c49c" class="w-dyn-list">
+      <div role="list" class="team-container" style="overflow-x: hidden;">
+        <div class="carousel-team" data-flickity='{ 
+                    "freeScroll": true, 
+                    "wrapAround": true,  
+                    "autoPlay":2500,
+                    "pageDots":false}'>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/DR_GHL_2.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small">Faculty Sponsor</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Dr. Gururaj H L</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Dr.Shreyas.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small">Faculty Sponsor</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Dr. Shreyas J</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/IMG_1411_VEDANG RAHUL PATIL.jpeg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Chair</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Vedang Patil</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/p1_PARTH BHATNAGAR.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Vice Chair</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Parth Bhatnagar</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Prince_Mathur.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Secretary</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Prince Mathur</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/VISHNU_G_B.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Webmaster</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Vishnu Bhattacharya</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/SAURABH_KUMAR.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Treasurer</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Saurabh Kumar</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Nishant_Tripathi.jpeg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Nishant Tripathi</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Arnab_Jena.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Arnab Jena</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Aishvi_Bansal.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Aishvi Bansal</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Shivansh_Gautam.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div daa-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class="overline-small" >Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class="heading-h4 semibold">Shivansh Gautam</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="team-post-container-line">
+      <div class="luminous-borders-blur only-right"></div>
+      <div class="luminous-borders-solid only-right"></div>
+    </div>
+    <div class="team-post-container-line-left">
+      <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+      <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+    </div>
+  </section>
+  <section class="relative-container">
+    <div class="container w-container">
+      <div class="spacer-2-5em---32px"></div>
+      <div class="section-header">
+        <div class="fa-icon-container">
+          <button style="background-color:transparent;" onclick="togglehiddensection()">
+            <i class="fa-solid fa-plus fa-4x" style="color: #ffffff;"></i>
+          </button>
+        </div>
+      </div>
+      <div class="spacer-2-5em---32px"></div>
+    </div>
+    <div class="luminous-borders-container">
+      <div class="luminous-borders-blur"></div>
+      <div class="luminous-borders-solid "></div>
+    </div>
+  </section>
+  <script defer>
+    function togglehiddensection() {
+      let collapsible1 = document.getElementById("collapsible1");
+      let collapsible2 = document.getElementById("collapsible2");
+      //collapsible1.classList.toggle("hide");
+      //collapsible2.classList.toggle("hide");
+      collapsible1.classList.toggle("show");
+      collapsible2.classList.toggle("show");
+    }
+  </script>
+  <section id="collapsible1" class="hide" style="transition: all 300ms;">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur "></div>
+        <div class="luminous-borders-solid "></div>
+      </div>
+      <div class="section-title-container">
+        <div data-w-id="7a69b502-a1af-943a-cd9d-8daa9728d955" class="heading-animation-trigger padding">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <h2 class="section-title-line">Office Bearers (2022-23)</h2>
+            <div class="section-title-blur">Office Bearers (2022-23)</div>
+          </div>
+        </div>
+      </div>
+      <div class="noise-background"></div>
+      <div class="white-background"></div>
+    </div>
+  </section>
+  <section class="relative-container hide" id="collapsible2" style="transition: all 300ms;">
+    <div id="w-node-_2d4f6a12-2360-9c7a-e773-30952a9d27b1-a467c49c" class="w-dyn-list">
+      <div role="list" class="team-container">
+        <div class="carousel-team" data-flickity='{ 
+          "freeScroll": true, 
+          "wrapAround": true,  
+          "autoPlay":2500,
+          "pageDots":false}'>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/DR_GHL.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Faculty Sponsor</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Dr. Gururaj H L</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Dr.RashmiR.jpg" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Faculty Sponsor</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Dr. Rashmi</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/advay_22_23.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Chair</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Advay</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/A_Aryan.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Vice Chair</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Achyut Aryan</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Shrinjayee_Dutta.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Secretary</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Shrinjayee</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Shashank_Pandey.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Treasurer</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Shashank</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Prakhar_Khurana.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">WebMaster</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Prakhar</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Aditya_C.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Aditya</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Vedang_P.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Vedang</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Sreya.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                    <div class=" overline-small">Executive Member</div>
+                  </div>
+                </div>
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                  <div>
+                    <div class=" heading-h4 semibold">Sreya</div>
+                  </div>
+                </div>
+                <div class="luminous-borders-container">
+                  <div class="luminous-borders-blur team-card-text"></div>
+                  <div class="luminous-borders-solid team-card-text"></div>
+                </div>
+                <div class="spacer-2-5em---32px"></div>
+              </div>
+            </div>
+          </div>
+          <div role="listitem" class="carousel-cell-team">
+            <div class="team-member-container">
+              <div class="team-image-container">
+                <img loading="lazy" alt="" src="/images/team/Kartik_A.png" class="team-member-image" />
+                <div class="luminous-borders-container z-index-1">
+                  <div class="luminous-borders-blur team-card-image"></div>
+                  <div class="luminous-borders-solid team-card-image"></div>
+                </div>
+              </div>
+              <div class="team-member-container-text">
+                <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+                  <div>
+                  <div class=" overline-small">Executive Member</div>
+                </div>
+              </div>
+              <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+                <div>
+                  <div class=" heading-h4 semibold">Kartik</div>
+              </div>
+            </div>
+            <div class="luminous-borders-container">
+              <div class="luminous-borders-blur team-card-text"></div>
+              <div class="luminous-borders-solid team-card-text"></div>
+            </div>
+            <div class="spacer-2-5em---32px"></div>
+          </div>
+        </div>
+      </div>
+      <div role="listitem" class="carousel-cell-team">
+        <div class="team-member-container">
+          <div class="team-image-container">
+            <img loading="lazy" alt="" src="/images/team/Divya_A.png" class="team-member-image" />
+            <div class="luminous-borders-container z-index-1">
+              <div class="luminous-borders-blur team-card-image"></div>
+              <div class="luminous-borders-solid team-card-image"></div>
+            </div>
+          </div>
+          <div class="team-member-container-text">
+            <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+              <div>
+                  <div class=" overline-small">Executive Member</div>
+            </div>
+          </div>
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+            <div>
+                  <div class=" heading-h4 semibold">Divya</div>
+          </div>
+        </div>
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur team-card-text"></div>
+          <div class="luminous-borders-solid team-card-text"></div>
+        </div>
+        <div class="spacer-2-5em---32px"></div>
+      </div>
+    </div>
+    </div>
+    <div role="listitem" class="carousel-cell-team">
+      <div class="team-member-container">
+        <div class="team-image-container">
+          <img loading="lazy" alt="" src="/images/team/Prince_M.png" class="team-member-image" />
+          <div class="luminous-borders-container z-index-1">
+            <div class="luminous-borders-blur team-card-image"></div>
+            <div class="luminous-borders-solid team-card-image"></div>
+          </div>
+        </div>
+        <div class="team-member-container-text">
+          <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b2">
+            <div>
+                  <div class=" overline-small">Executive Member</div>
+          </div>
+        </div>
+        <div data-w-id="10cc417c-272c-beca-0855-fdd55e1df2b6">
+          <div>
+            <div class=" heading-h4 semibold">Prince</div>
+          </div>
+      </div>
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur team-card-text"></div>
+        <div class="luminous-borders-solid team-card-text"></div>
+      </div>
+      <div class="spacer-2-5em---32px"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="team-post-container-line">
+      <div class="luminous-borders-blur only-right"></div>
+      <div class="luminous-borders-solid only-right"></div>
+    </div>
+    <div class="team-post-container-line-left">
+      <div class="luminous-borders-blur no-bottom no-top no-right"></div>
+      <div class="luminous-borders-solid no-bottom no-top no-right"></div>
+    </div>
+  </section>
+  <% } %>
+
+  <%- include("../partials/footer.ejs") %>
+</body>
+
+</html>
