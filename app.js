@@ -14,24 +14,27 @@ require('dotenv').config();
 // Not using helmet as I don't have a whitelist of URL's to allow since there are a lot of imports in the ejs files.
 // const helmet = require('helmet');
 
-
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const eventsRouter = require('./routes/events');
 
 const app = express();
-
 const mongoose = require('mongoose');
 mongoose.set("strictQuery", false);
 const mongoDB = process.env.MONGO_URI;
 const passport_secret = process.env.PASSPORT_SECRET;
 
-main().catch((err) => {
-  console.log(err);
-});
-async function main() {
-  await mongoose.connect(mongoDB);
-}
+mongoose.connect(process.env.MONGO_URI)
+  .then(()=> {
+    console.log('MongoDB connected');
+    app.listen(process.env.PORT || 3000, () => {
+      console.log('Server started on port ' + (process.env.PORT || 3000));
+    });
+  })
+  .catch(err => {
+    console.error("Error Connecting to MONGO: ",err.message);
+    process.exit(1);
+  })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

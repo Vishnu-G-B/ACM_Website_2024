@@ -78,353 +78,144 @@
 </head>
 
 <body>
+  <!-- TEMPLATE CAREERS.HTML -->
   <%- include("../partials/navbar.ejs") %>
-  <section style="margin-top: 25px;">
-    <div class="w-layout-blockcontainer container w-container">
+
+  <% if(!darkMode) { %>
+    <section class="relative-container gradient-border" style="background-color: white; margin:3px">
+      <div class="title-container">
+        <div class="h-container title font-control">
+          <%= eventInfo.name %>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="relative-container">
+        <img src="/images/Events/event.png" alt="temporary event image" class="blog-post-main-image">
+        <div class="luminous-borders-container z-index-1">
+          <!-- <div class="luminous-borders-blur"></div> -->
+          <!-- <div class="luminous-borders-solid"></div> -->
+        </div>
+      </div>
+    </section>
+    <section class="relative-container gradient-border" style="background-color: white; margin:3px">
+      <div class="container w-container">
+        <div class="spacer-4em---48px"></div>
+        <div class="section-header">
+          <div class="page-header-container">
+            <!-- <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c752c" class="heading-animation-trigger">
+              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+                <h1 class="overline white">why us</h1>
+              </div>
+            </div> -->
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7531" class="heading-animation-trigger">
+              <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7532" class="animation-content">
+                <% if(userUniqueCode) {%>
+                <a class="explore" href="#" onclick="event.preventDefault()" id="registerLink">
+                  <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte" style="color: #1e1e1e;">
+                    <strong>You're Registered!<br /> </strong>
+                    <strong>Your Unique Code is: <span class="title"><%= userUniqueCode %></span></strong>
+                  </h2>
+                </a>
+                <% } else { %>
+                <a class="explore" style="color:#1e1e1e" href="/events/register/<%= eventID %>" id="registerLink">
+                  <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte">
+                    <strong class="title">Register Now -></strong> 
+                  </h2>
+                </a>
+                <% } %>
+              </div>
+            </div>
+            <% if(userUniqueCode) { %>
+              <!-- <div class="spacer-1-3em---16px"></div>  -->
+              <p data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7536" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">
+                  Give this code at the event entrance to confirm your attendance.
+              </p> 
+            <% } %>
+          </div>
+        </div>
+        <div class="spacer-4em---48px"></div>
+      </div>
       <div class="luminous-borders-container">
-        <div class="luminous-borders-blur "></div>
-        <div class="luminous-borders-solid "></div>
+        <!-- <div class="luminous-borders-blur no-bottom no-top"></div> -->
+        <!-- <div class="luminous-borders-solid no-bottom no-top"></div> -->
       </div>
-      <div class="section-title-container">
-        <div data-w-id="e8bb4201-881a-a9ed-a996-8815788a7bfb" class="heading-animation-trigger padding">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <h2 class="section-title-line"><%= eventInfo.name %></h2>
-            <div class="section-title-blur"><%= eventInfo.name %></div>
-          </div>
-        </div>
-      </div>
-      <div class="noise-background"></div>
-      <div class="white-background"></div>
-    </div>
-  </section>
-  <section>
-    <div class="relative-container">
-      <!-- <img srcset="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-500.jpeg 500w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-800.jpeg 800w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-1080.jpeg 1080w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-1600.jpeg 1600w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-2000.jpeg 2000w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2.jpeg 2500w" loading="lazy" sizes="100vw" src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2.jpg" alt="team" class="blog-post-main-image" />-->
-      <img src="/images/Events/event.png" alt="temporary event image" class="blog-post-main-image">
-      <div class="luminous-borders-container z-index-1">
-        <div class="luminous-borders-blur"></div>
-        <div class="luminous-borders-solid"></div>
-      </div>
-    </div>
-  </section>
-  <section class="relative-container">
-    <div class="spacer-4em---48px"></div>
-    <div class="container w-container">
-      <div class="section-header">
-        <div class="page-header-container">
-          <!-- <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c752c" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <h1 class="overline white">why us</h1>
-            </div>
-          </div> -->
-          <!-- <div class="spacer-1-3em---16px"></div> -->
-          <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7531" class="heading-animation-trigger">
-            <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7532" class="animation-content">
-              <% if(userUniqueCode) {%>
-              <a class="explore" href="#" onclick="event.preventDefault()" id="registerLink">
-                <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte">
-                  <strong>You're Registered!<br /> </strong>
-                  <strong>Your Unique Code is: <span class="title"><%= userUniqueCode %></span></strong>
-                </h2>
-              </a>
-              <% } else { %>
-              <a class="explore" href="/events/register/<%= eventID %>" id="registerLink">
-                <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte"><strong>Register Now</strong> <i class="fa-solid fa-arrow-right-long" style="color: #ffffff;"></i>
-                </h2>
-              </a>
-              <% } %>
-            </div>
-          </div>
-          <% if(userUniqueCode) { %>
-            <!-- <div class="spacer-1-3em---16px"></div>  -->
-            <p data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7536" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">
-                Give this code at the event entrance to confirm your attendance.
-            </p> 
-          <% } %>
-        </div>
-      </div>
-    </div>
-    <div class="spacer-4em---48px"></div>
-    <div class="luminous-borders-container">
-      <div class="luminous-borders-blur no-bottom no-top"></div>
-      <div class="luminous-borders-solid no-bottom no-top"></div>
-    </div>
-  </section>
-  <!-- <section class="relative-container">
-    <div class="why-us-container">
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="d7c06f54-43e7-d32d-29a5-724dda0195e3" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="d7c06f54-43e7-d32d-29a5-724dda0195e4" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="d7c06f54-43e7-d32d-29a5-724dda0195e5" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">100% REMOTE</div>
-            </div>
-          </div>
-        </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="d7c06f54-43e7-d32d-29a5-724dda0195eb" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Work from Anywhere, Embrace Freedom and Flexibility.</h2>
-          </a>
-          <p data-w-id="d7c06f54-43e7-d32d-29a5-724dda0195ed" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.</p>
-        </div>
+    </section>
+  <% } else { %>
+    <section style="margin-top: 25px;">
+      <div class="w-layout-blockcontainer container w-container">
         <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-right no-bottom"></div>
-          <div class="luminous-borders-solid no-right no-bottom"></div>
+          <div class="luminous-borders-blur "></div>
+          <div class="luminous-borders-solid "></div>
         </div>
-      </div>
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="2bc44113-dd1f-2571-7d2b-0694a29b3de7" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="2bc44113-dd1f-2571-7d2b-0694a29b3de8" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="2bc44113-dd1f-2571-7d2b-0694a29b3de9" class="heading-animation-trigger">
+        <div class="section-title-container">
+          <div data-w-id="e8bb4201-881a-a9ed-a996-8815788a7bfb" class="heading-animation-trigger padding">
             <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">FLEXIBLE HOURS</div>
+              <h2 class="section-title-line"><%= eventInfo.name %></h2>
+              <div class="section-title-blur"><%= eventInfo.name %></div>
             </div>
           </div>
         </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="2bc44113-dd1f-2571-7d2b-0694a29b3def" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Tailor Your Schedule for Optimal Productivity and Personal Well-being</h2>
-          </a>
-          <p data-w-id="2bc44113-dd1f-2571-7d2b-0694a29b3df1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.</p>
-        </div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-right no-bottom"></div>
-          <div class="luminous-borders-solid no-right no-bottom"></div>
-        </div>
+        <div class="noise-background"></div>
+        <div class="white-background"></div>
       </div>
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="a66ca6bc-ab4a-e416-6c87-6f4d35b34a9a" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="a66ca6bc-ab4a-e416-6c87-6f4d35b34a9b" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="a66ca6bc-ab4a-e416-6c87-6f4d35b34a9c" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">MEDICAL INSURANCE</div>
-            </div>
-          </div>
-        </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="a66ca6bc-ab4a-e416-6c87-6f4d35b34aa2" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Your Health Matters Comprehensive Medical Coverage at Shadows</h2>
-          </a>
-          <p data-w-id="a66ca6bc-ab4a-e416-6c87-6f4d35b34aa4" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.</p>
-        </div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-bottom no-right"></div>
-          <div class="luminous-borders-solid no-bottom no-right"></div>
-        </div>
-      </div>
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="59ae2f8d-1858-60a8-b805-6f4e4d5cfd0c" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="59ae2f8d-1858-60a8-b805-6f4e4d5cfd0d" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="59ae2f8d-1858-60a8-b805-6f4e4d5cfd0e" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">UNLIMITED PTO</div>
-            </div>
-          </div>
-        </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="59ae2f8d-1858-60a8-b805-6f4e4d5cfd14" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Embrace a Healthy Work-Life Integration with Time for Yourself</h2>
-          </a>
-          <p data-w-id="59ae2f8d-1858-60a8-b805-6f4e4d5cfd16" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.</p>
-        </div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-right no-bottom"></div>
-          <div class="luminous-borders-solid no-right no-bottom"></div>
-        </div>
-      </div>
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="0be9db07-2752-9a47-71f0-a470bfcb8500" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="0be9db07-2752-9a47-71f0-a470bfcb8501" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="0be9db07-2752-9a47-71f0-a470bfcb8502" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">GOOD SALARY<br /></div>
-            </div>
-          </div>
-        </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="0be9db07-2752-9a47-71f0-a470bfcb8508" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Recognizing Your Expertise with Financial Stability and Growth</h2>
-          </a>
-          <p data-w-id="0be9db07-2752-9a47-71f0-a470bfcb850a" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.<br /></p>
-        </div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-right no-bottom"></div>
-          <div class="luminous-borders-solid no-right no-bottom"></div>
-        </div>
-      </div>
-      <div class="glow-cards">
-        <div class="glow-card-title">
-          <div class="glow-card-subtitle">
-            <div data-w-id="7a29c2e1-0e28-5837-4d23-b5047fb75d5c" style="height:0%" class="glow-card-title-icon"></div>
-            <div data-w-id="7a29c2e1-0e28-5837-4d23-b5047fb75d5d" style="height:0%" class="glow-card-title-icon blur">
-            </div>
-          </div>
-          <div data-w-id="7a29c2e1-0e28-5837-4d23-b5047fb75d5e" class="heading-animation-trigger">
-            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-              <div class="overline white">CAREER GROWTH</div>
-            </div>
-          </div>
-        </div>
-        <div class="glow-card-text-container"><a href="#" class="w-inline-block">
-            <h2 data-w-id="7a29c2e1-0e28-5837-4d23-b5047fb75d64" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="heading-h5">Chart Your Career Path with Mentorship and Development Programs</h2>
-          </a>
-          <p data-w-id="7a29c2e1-0e28-5837-4d23-b5047fb75d66" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)">
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#x27;t look even.<br /></p>
-        </div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-bottom no-right"></div>
-          <div class="luminous-borders-solid no-bottom no-right"></div>
-        </div>
-      </div>
-    </div>
-    <div class="luminous-borders-container">
-      <div class="luminous-borders-blur only-right"></div>
-      <div class="luminous-borders-solid only-right"></div>
-    </div>
-  </section> -->
-  <!-- <section>
-    <div class="w-layout-blockcontainer container w-container">
-      <div class="luminous-borders-container">
-        <div class="luminous-borders-blur no-bottom"></div>
-        <div class="luminous-borders-solid no-bottom"></div>
-      </div>
-      <div class="section-title-container">
-        <div data-w-id="5d741776-0e17-9391-c931-808659612155" class="heading-animation-trigger padding">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <h2 class="section-title-line">Event Timeline</h2>
-            <div class="section-title-blur">Event Timeline</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- <section>
-    <div class="careers-why-us-grid">
-      <div id="w-node-_138f359f-906b-b30b-c9a0-e692af2f1c8b-a467c49f" class="relative-container"><img src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e0_CAREERS-1.jpg" loading="lazy" sizes="(max-width: 991px) 100vw, 50vw" srcset="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e0_CAREERS-1-p-500.jpg 500w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e0_CAREERS-1.jpg 1000w" alt="team" class="how-we-hire-image" />
+    </section>
+    <section>
+      <div class="relative-container">
+        <!-- <img srcset="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-500.jpeg 500w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-800.jpeg 800w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-1080.jpeg 1080w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-1600.jpeg 1600w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2-p-2000.jpeg 2000w, https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2.jpeg 2500w" loading="lazy" sizes="100vw" src="../assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c4e1_team-2.jpg" alt="team" class="blog-post-main-image" />-->
+        <img src="/images/Events/event.png" alt="temporary event image" class="blog-post-main-image">
         <div class="luminous-borders-container z-index-1">
           <div class="luminous-borders-blur"></div>
           <div class="luminous-borders-solid"></div>
         </div>
       </div>
-      <div class="why-us-text-container">
+    </section>
+    <section class="relative-container">
+      <div class="spacer-4em---48px"></div>
+      <div class="container w-container">
         <div class="section-header">
           <div class="page-header-container">
-            <div data-w-id="5913ca5b-54f8-d7a0-2c9c-1a939ec4d21e" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content"></div>
-            </div>
-            <div class="spacer-4em---48px"></div>
-            <div data-w-id="5913ca5b-54f8-d7a0-2c9c-1a939ec4d223" class="heading-animation-trigger">
+            <!-- <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c752c" class="heading-animation-trigger">
               <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <h2 class="section-subtitle">Schedule</h2>
+                <h1 class="overline white">why us</h1>
+              </div>
+            </div> -->
+            <!-- <div class="spacer-1-3em---16px"></div> -->
+            <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7531" class="heading-animation-trigger">
+              <div data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7532" class="animation-content">
+                <% if(userUniqueCode) {%>
+                <a class="explore" href="#" onclick="event.preventDefault()" id="registerLink">
+                  <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte">
+                    <strong>You're Registered!<br /> </strong>
+                    <strong>Your Unique Code is: <span class="title"><%= userUniqueCode %></span></strong>
+                  </h2>
+                </a>
+                <% } else { %>
+                <a class="explore" href="/events/register/<%= eventID %>" id="registerLink">
+                  <h2 data-w-id="c3b47097-3b83-ac05-98fb-2c3755fdd8c6" class="cta-tilte">
+                    <strong>Register Now -></strong>
+                  </h2>
+                </a>
+                <% } %>
               </div>
             </div>
-            <div class="spacer-1-3em---16px"></div>
-             <p data-w-id="5913ca5b-54f8-d7a0-2c9c-1a939ec4d228" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">Our hiring process at our blog is designed to find talented individuals who align with our
-              values and contribute to our success. Here&#x27;s an overview:</p> 
-            <div class="spacer-2em---24px"></div>
+            <% if(userUniqueCode) { %>
+              <!-- <div class="spacer-1-3em---16px"></div>  -->
+              <p data-w-id="da8a409e-41c5-1902-3289-c03f3f5c7536" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">
+                  Give this code at the event entrance to confirm your attendance.
+              </p> 
+            <% } %>
           </div>
-        </div>
-        <div class="careers-steps-container">
-          <div class="careers-step-container">
-            <div data-w-id="7ed96a70-bcb0-3ad2-ed64-59d82470412a" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Application</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="6c0ab355-741f-df5c-71a2-df018552da01" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">Candidates submit their applications online, including resumes and cover letters.</p>
-          </div>
-          <div class="careers-step-container">
-            <div data-w-id="33774729-5102-b567-86f7-93bc754a1887" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Screening</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="333ed894-db6c-d654-5c2b-7f22b3528242" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">We carefully review applications to assess qualifications and experience.</p>
-          </div>
-          <div class="careers-step-container">
-            <div data-w-id="f798ad72-b7c3-4abb-0987-6cb83f535a72" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Interviews</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="28cb16d7-be03-d846-e588-3db2d1eb13e6" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">Selected candidates are invited for interviews, conducted in person or via video/phone.
-            </p>
-          </div>
-          <div class="careers-step-container">
-            <div data-w-id="1cb1564e-acda-8661-b26c-6d4dc852d0b7" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Assessments</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="e1d2a26f-38d3-91b2-5d8a-c5026b926688" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">Some roles may require candidates to complete assessments or provide work samples.</p>
-          </div>
-          <div class="careers-step-container">
-            <div data-w-id="55a47a1e-dfe5-4752-bf46-58bc66166ba7" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Reference</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="66da4da6-5fe5-9d30-193a-ee61a50fb917" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">We conduct reference checks to gain insights into candidates&#x27; work ethic and
-              collaboration skills.</p>
-          </div>
-          <div class="careers-step-container">
-            <div data-w-id="7cdac327-b269-df11-92f9-773fe7950070" class="heading-animation-trigger">
-              <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-                <div class="careers-why-us-step-point-container"><img src="https://assets.website-files.com/64d9e7b1693ca5d7a467c4b4/64d9e7b1693ca5d7a467c50b_list-dot-black-white.svg" loading="lazy" alt="dot" class="careers-why-us-steps-point-svg" />
-                  <div class="how-we-hire-point">Final</div>
-                </div>
-              </div>
-            </div>
-            <p data-w-id="a91ebf5c-ab6e-6f98-f761-cca20b1a1040" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">We make our selection and extend a formal offer to the chosen candidate.</p>
-          </div>
-        </div>
-         <div class="spacer-2em---24px"></div> 
-         <p data-w-id="1933d7ef-dabd-4ea0-534c-f5b6a340067f" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="text-md">We strive to maintain a fair and transparent process, providing equal opportunities for all 
-          applicants. We appreciate your interest in joining our team.</p>
-        <div class="spacer-4em---48px"></div>
-        <div class="luminous-borders-container">
-          <div class="luminous-borders-blur no-left"></div>
-          <div class="luminous-borders-solid no-left"></div>
         </div>
       </div>
-    </div>
-  </section> -->
+      <div class="spacer-4em---48px"></div>
+      <div class="luminous-borders-container">
+        <div class="luminous-borders-blur no-bottom no-top"></div>
+        <div class="luminous-borders-solid no-bottom no-top"></div>
+      </div>
+    </section>
+  <% } %>
   <%- include("../partials/footer.ejs") %>
 </body>
 

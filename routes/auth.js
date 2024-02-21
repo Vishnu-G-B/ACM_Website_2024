@@ -79,7 +79,8 @@ router.post("/sign-up", [
         if (err) {
           throw err;
         } else {
-          const existingUser = User.findOne({ username: req.body.username });
+          const existingUser = await User.findOne({ username: req.body.username });
+          console.log(existingUser);
           if (existingUser) {
             console.log("User already exists");
             res.render("sign-up", {

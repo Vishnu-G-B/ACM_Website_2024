@@ -274,7 +274,8 @@
         <div class="spacer-5em---64px"></div>
       </div>
     </section>
-    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden; background-color:white;">
+    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden; background-color:white;
+    min-height:max-content; ">
       <div class="carousel" data-flickity='{ 
       "freeScroll": true, 
       "wrapAround": true,  
@@ -516,7 +517,7 @@
         <div class="spacer-5em---64px"></div>
       </div>
     </section>
-    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden;">
+    <div role="list" class="blog-cards-list-flex w-dyn-items" style="overflow-x: hidden; min-height:max-content;">
       <div class="carousel" data-flickity='{ 
       "freeScroll": true, 
       "wrapAround": true,  
@@ -524,7 +525,7 @@
       "pageDots":false}' >
       <% events.forEach(function(event,index) { %>
         <% if(!event.over) {%>
-        <div role="listitem" class="carousel-cell">
+        <div role="listitem" class="carousel-cell" style="min-height: max-content;">
           <div class="blog-card-post-container">
             <a id="w-node-ab834a86-c962-a4c8-91c5-761156414def-a467c499"
               data-w-id="051912d0-4dad-6793-9193-30fdf284e56e"

@@ -5049,6 +5049,9 @@ blockquote {
   flex-direction: column;
   display: flex;
   height: 90vh;
+  @media screen and (max-width:479px) {
+    height: 100vh;
+  }
   /* The above height will change the height of all the carousel items */
 }
 
@@ -8966,7 +8969,7 @@ a.explore:hover .cta-tilte {
   }
 
   .section-subtitle {
-    font-size: 30px;
+    font-size: 30px ;
     line-height: 38px;
   }
 
@@ -9694,7 +9697,7 @@ a.explore:hover .cta-tilte {
   }
 
   .cta-tilte {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 36px;
   }
 
@@ -9711,7 +9714,7 @@ a.explore:hover .cta-tilte {
   }
 
   .section-subtitle {
-    font-size: 28px;
+    font-size: 28px ;
     line-height: 36px;
   }
 
@@ -10021,7 +10024,7 @@ a.explore:hover .cta-tilte {
   }
 
   .blog-card-text-container {
-    padding-top: 3em;
+    padding-top:0;
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -10540,12 +10543,41 @@ section.show {
   font-weight: 900;
   font-size: 9rem;
   line-height: 9rem;
-  /* rotate: -45deg; */
-  /* -webkit-text-stroke: 5px black; */
+  text-wrap: wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
   color: #1e1e1e;
   text-align: left;
+  @media screen and (max-width:479px ){
+    font-size: 4rem;
+    line-height:4rem;
+    /* margin-bottom: 10px; */
+    /* margin-left: 5px; */
+  }
 }
 
 .gradient-background {
   background: linear-gradient(to right, #ff6725, #0000FF);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:20px;
+}
+
+.h-container {
+  flex: 1;
+}
+
+.font-control {
+  font-size: 2rem !important;
+  overflow-wrap:normal;
+  text-wrap:wrap;
+  font-weight: 900;
+  @media screen and (max-width:479px) {
+    font-size: 1.3rem !important;
+  }    
 }

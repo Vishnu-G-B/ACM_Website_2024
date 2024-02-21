@@ -84,6 +84,7 @@ router.get("/register/:eventID", async function (req, res, next) {
                     return res.render("event",{
                         eventID:eventID,
                         userUniqueCode: uniqueCode,
+                        eventInfo: event,
                     });
                 }
 
@@ -119,6 +120,7 @@ router.get("/register/:eventID", async function (req, res, next) {
                         return res.render("event",{
                             eventID:eventID,
                             userUniqueCode:userCode,
+                            eventInfo: event,
                         });
                         break;
                     } catch (error) {
