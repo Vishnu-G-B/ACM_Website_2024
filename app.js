@@ -79,7 +79,16 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
-app.use(session({ secret: passport_secret, resave: false, saveUninitialized: true }));
+
+app.set("trust proxy",1);
+
+app.use(session({ 
+  secret: passport_secret, 
+  resave: false, 
+  saveUninitialized: true,
+  proxy: true,
+  name: "MyCoolSession",
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
