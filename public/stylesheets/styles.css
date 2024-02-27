@@ -10581,3 +10581,13 @@ section.show {
     font-size: 1.3rem !important;
   }    
 }
+
+.font-control-subtitle {
+  font-size: 2rem !important;
+  overflow-wrap:normal;
+  text-wrap:wrap;
+  font-weight: 900;
+  @media screen and (max-width:479px) {
+    font-size: 1rem !important;
+  }    
+}
