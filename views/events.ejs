@@ -227,7 +227,7 @@
         const myCircle = new Circle(30, 80, 10)
         let circleArray = []
 
-        for (let i = 0; i < 900; i++) {
+        for (let i = 0; i < (canvasWidth<=479? 200: 900 ); i++) {
           const randomXCoordinate = Math.random() * canvasWidth
           const randomYCoordinate = Math.random() * canvasHeight
           const randomRadius = Math.random() * 12

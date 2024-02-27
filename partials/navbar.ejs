@@ -118,7 +118,7 @@
             .then(response => response.json())
             .then(data => {
               console.log("Theme set to:", data.darkMode);
-              location.reload();
+              location.href = "/";
             })
             .catch(error => {
               console.error(error);
@@ -324,7 +324,7 @@
             .then(response => response.json())
             .then(data => {
               console.log("Theme set to:", data.darkMode);
-              location.reload();
+              location.href = "/";
             })
             .catch(error => {
               console.error(error);

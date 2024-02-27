@@ -16,8 +16,18 @@
         <canvas id="myCanvas"></canvas>
         <div class="heading">
           <h1 class="title"
-            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">OFFICE BEARERS</h1>
+            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;"
+            id= "changingTitleLight"
+            >OFFICE BEARERS
+          </h1>
         </div>
+        <script defer>
+          let title = document.getElementById("changingTitleLight");
+          let width = window.innerWidth;
+          if(width <=479){
+            title.innerHTML = "OFFICE <br/> BEARERS"
+          }
+        </script>
       </div>
       <script>
         const canvas = document.getElementById('myCanvas')
@@ -140,7 +150,7 @@
         const myCircle = new Circle(30, 80, 10)
         let circleArray = []
 
-        for (let i = 0; i < 900; i++) {
+        for (let i = 0; i < (canvasWidth<=479? 200: 900 ); i++) {
           const randomXCoordinate = Math.random() * canvasWidth
           const randomYCoordinate = Math.random() * canvasHeight
           const randomRadius = Math.random() * 12
@@ -948,10 +958,17 @@
         <canvas id="myCanvas"></canvas>
         <div class="heading">
           <h1 class="title"
-            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;">
-            ACM<br>MITB
-            CHAPTER</h1>
+            style="animation:textShine 6s ease-in-out infinite alternate; font-family:'Test' !important;"
+            id="titleChangingLight" >
+            OFFICE BEARERS </h1>
         </div>
+        <script defer>
+          let title = document.getElementById("changingTitleLight");
+          let width = window.innerWidth;
+          if(width <=479){
+            title.innerHTML = "OFFICE <br/> BEARERS"
+          }
+        </script>
       </div>
       <script>
         const canvas = document.getElementById('myCanvas')
@@ -1074,7 +1091,7 @@
         const myCircle1 = new Circle(30, 80, 10)
         let circleArray1 = []
 
-        for (let i = 0; i < 900; i++) {
+        for (let i = 0; i < (canvasWidth1<=479? 200: 900 ); i++) {
           const randomXCoordinate = Math.random() * canvasWidth1
           const randomYCoordinate = Math.random() * canvasHeight1
           const randomRadius = Math.random() * 12
