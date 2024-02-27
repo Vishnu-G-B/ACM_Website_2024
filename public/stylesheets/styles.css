@@ -4829,7 +4829,21 @@ blockquote {
   margin-left: -1rem;
 
   @media screen and (max-width:479px) {
-    margin-left: 0;
+    /* margin-left: 50px; */
+    width: 100%;
+    /* margin-right: -100px; */
+  }
+}
+
+.nav-logoNlottie-arrange dotlottie-player {
+  @media screen and ( max-width:479px) {
+    min-width: fit-content;
+    margin-right: -125px;
+  }
+}
+.nav-logoNlottie-arrange img {
+  @media screen and (max-width:479px) {
+    margin-right: -30px;
   }
 }
 
