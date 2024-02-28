@@ -154,7 +154,7 @@
                 rotateY(0) rotateZ(0) skew(0, 0);
             " class="contact-form w-form">
             <form id="wf-form-Contact-us-Email-Form" name="wf-form-Contact-us-Email-Form"
-              data-name="Contact us Email Form" method="get" data-wf-page-id="64d9e7b1693ca5d7a467c4a3"
+              data-name="Contact us Email Form" data-wf-page-id="64d9e7b1693ca5d7a467c4a3"
               data-wf-element-id="671f0823-c9f2-6e71-cdf7-21666e4b7951">
               <input type="text" class="moder-form-text-field w-input" maxlength="256" name="Name" data-name="Name"
                 placeholder="Your Name" id="Name" required="" />
@@ -169,6 +169,20 @@
                 <input type="submit" value="Submit your Message"
                 data-wait="Please wait..." class="button-contact-us w-button" />
             </form>
+            <script defer>
+              document.getElementById("wf-form-Contact-us-Email-Form").addEventListener("submit",function(event) {
+                event.preventDefault();
+                const form = event.target;
+                const formData = new FormData(form);
+                const subject = 'Contact form submission';
+                let body = "Name: " + formData.get('Name') + "\n";
+                body += "Phone: " + formData.get('Name-3') + "\n";
+                body += "Email: " + formData.get('Name-2') + "\n";
+                body += "Message: " + formData.get('Message');
+                const mailToURL = "mailto:acm.mitblr@manipal.edu?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+                window.location.href = mailToURL;
+              })
+            </script>
             <div class="success-message w-form-done">
               <div class="text-md">
                 Thank you! Your submission has been received!

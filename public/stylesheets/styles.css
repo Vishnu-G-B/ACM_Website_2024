@@ -10605,3 +10605,7 @@ section.show {
     font-size: 1rem !important;
   }    
 }
+
+.no-marker {
+  list-style: none;
+}

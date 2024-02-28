@@ -1,5 +1,5 @@
-<section class="hero-container min-height" style="background-color: white">
-    <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: white;">
+<section class="hero-container min-height" style="background-color: <%= bgColor %>">
+    <div id="canvasParent" class="container-overflow-hidden min-height" style="background-color: <%= bgColor %>;">
         <canvas id="myCanvas"></canvas>
         <div class="heading title">
             <h1 class="landing-font" style="font-family:'Test' !important;" id="changingTitleLight">
@@ -10,7 +10,7 @@
             let title = document.getElementById("changingTitleLight");
             let screenWidth = window.innerWidth;
             if (screenWidth <= 479) {
-                title.innerHTML = "ACM <br/> MITB" + "<br/>" + "STUDENT" + "<br/>" + "CHAPTER";
+                title.innerHTML = <%= mobileTitle %>;
             }
         </script>
     </div>

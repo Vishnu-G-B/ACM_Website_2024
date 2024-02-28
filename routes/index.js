@@ -15,8 +15,14 @@ router.get("/team",function(req,res,next){
 });
 
 router.get("/contact",function(req,res,next){
+  req.session.darkMode = true;
+  res.locals.darkMode = req.session.darkMode;
   res.render("contact")
 })
+
+router.get("/about", function(req,res,next) {
+  res.render("about");
+});
 
 router.get("/comingsoon",function(req,res,next){
   res.render("inprogress");
