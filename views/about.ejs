@@ -8,7 +8,7 @@
 <body>
   <%- include("../partials/navbar.ejs") %>
 
-  
+
   <% if(!darkMode) { %>
   <%- include("../partials/heroBG.ejs",{ bgColor: "white", title: "About Us", mobileTitle: "About <br/> Us"}) %>
   <section class="gradient-border" style="background-color: white; margin: 3px">
@@ -52,248 +52,341 @@
           </p>
         </div>
       </div>
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-2-5em---32px"></div>
+      <div class="align-container">
+        <button id="expand-button"><img src="/images/general/plus_dark.png" class="plus_icon"></button>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          const toggleButton = document.getElementById("expand-button");
+          const content = document.getElementById("hidden-content");
+
+          toggleButton.addEventListener("click", (event) => {
+            content.classList.toggle("height-fit");
+            toggleButton.classList.toggle("rotate");
+          })
+        })
+      </script>
+
       <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article I: Purpose</div>
+      <div class="height-0" id="hidden-content">
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article I: Purpose</div>
+            </div>
           </div>
-        </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              1. The Chapter is organized and will be operated exclusively for educational
-              and scientific purposes to promote the following:
-              <ul role="list" style="color: #1e1e1e;">
-                <li>
-                  An increased knowledge of and greater interest in the science,
-                  design, development, construction, languages, management and
-                  applications of modern computing
-                </li>
-                <li>
-                  Greater interest in computing and its applications
-                </li>
-                <li>
-                  A means of communication between persons having an interest in
-                  computing
-                </li>
-              </ul>
-            </li>
-            <li>
-              2. The Chapter will serve students at MIT Bangalore and other interested
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                1. The Chapter is organized and will be operated exclusively for educational
+                and scientific purposes to promote the following:
+                <ul role="list" style="color: #1e1e1e;">
+                  <li>
+                    An increased knowledge of and greater interest in the science,
+                    design, development, construction, languages, management and
+                    applications of modern computing
+                  </li>
+                  <li>
+                    Greater interest in computing and its applications
+                  </li>
+                  <li>
+                    A means of communication between persons having an interest in
+                    computing
+                  </li>
+                </ul>
+              </li>
+              <li>
+                2. The Chapter will serve students at MIT Bangalore and other interested
                 persons in the community.
-            </li>
-            <li>
-              3. The Chapter is chartered by ACM.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article II: Membership</div>
+              </li>
+              <li>
+                3. The Chapter is chartered by ACM.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              Membership in the Student Chapter shall be open to all ACM members
-              and nonmembers.
-            </li>
-            <li>
-              Voting membership in the Student Chapter shall be granted to all active
-              Chapter members.
-            </li>
-            <li>
-              Membership shall not be restricted according to race, creed, age, gender, disability, nationality, sexual orientation, economic status, veteran
-              status, or parenthood.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article III: Officers</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article II: Membership</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                Membership in the Student Chapter shall be open to all ACM members
+                and nonmembers.
+              </li>
+              <li>
+                Voting membership in the Student Chapter shall be granted to all active
+                Chapter members.
+              </li>
+              <li>
+                Membership shall not be restricted according to race, creed, age, gender, disability, nationality, sexual orientation, economic status, veteran
+                status, or parenthood.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              The officers of this Chapter shall be: Chair, Vice Chair, and Treasurer.
-              These individuals must be ACM Student Members. In addition, a Faculty
-              Sponsor with an ACM Professional Membership is required. Other officers may also be established.
-            </li>
-            <li>
-              The officers shall be elected by a plurality of votes cast at the annual
-              election meeting or via electronic voting and serve for a minimum of
-              one year.
-            </li>
-            <li>
-              Appointment or nomination of an individual to an officer position within
-              an ACM Chapter shall be in general limited to two full consecutive terms
-              in the same position. This recommendation is intended to encourage
-              the continuing infusion of new volunteers into the organization and to
-              encourage office holders to give thought to planning for their successor.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article IV: duties of <br> Officers</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article III: Officers</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                The officers of this Chapter shall be: Chair, Vice Chair, and Treasurer.
+                These individuals must be ACM Student Members. In addition, a Faculty
+                Sponsor with an ACM Professional Membership is required. Other officers may also be established.
+              </li>
+              <li>
+                The officers shall be elected by a plurality of votes cast at the annual
+                election meeting or via electronic voting and serve for a minimum of
+                one year.
+              </li>
+              <li>
+                Appointment or nomination of an individual to an officer position within
+                an ACM Chapter shall be in general limited to two full consecutive terms
+                in the same position. This recommendation is intended to encourage
+                the continuing infusion of new volunteers into the organization and to
+                encourage office holders to give thought to planning for their successor.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              The Chair is the principal officer and is responsible for leading the
-              Chapter and managing its activities in accordance with the policies and
-              procedures of ACM and these bylaws.
-            </li>
-            <li>
-              The Vice Chair shall preside at meetings in the absence of the Chair,
-              assist the Chair in the management of the Chapter, and perform other
-              duties that may be assigned by the Chair.
-            </li>
-            <li>
-              The Treasurer is tasked with maintaining Chapter meeting minutes, financial records, and dues collection. They prepare annual reports, submit amendments to ACM Headquarters, and carry out duties assigned by the Chair.
-            </li>
-            <li>
-              The Faculty Sponsor, a faculty or full-time staff member of the school, is pivotal in overseeing the Chapter's activities. Responsibilities include ensuring continuity, fostering student-faculty relations, upholding university standards, and managing finances if needed. They also advocate for the Chapter within the faculty and administration. For high school Chapters and underage students, their attendance at evening meetings is mandatory, or a designated chaperone approved by the school may attend.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article V: Meetings</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article IV: duties of <br> Officers</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                The Chair is the principal officer and is responsible for leading the
+                Chapter and managing its activities in accordance with the policies and
+                procedures of ACM and these bylaws.
+              </li>
+              <li>
+                The Vice Chair shall preside at meetings in the absence of the Chair,
+                assist the Chair in the management of the Chapter, and perform other
+                duties that may be assigned by the Chair.
+              </li>
+              <li>
+                The Treasurer is tasked with maintaining Chapter meeting minutes, financial records, and dues collection. They prepare annual reports, submit amendments to ACM Headquarters, and carry out duties assigned by the Chair.
+              </li>
+              <li>
+                The Faculty Sponsor, a faculty or full-time staff member of the school, is pivotal in overseeing the Chapter's activities. Responsibilities include ensuring continuity, fostering student-faculty relations, upholding university standards, and managing finances if needed. They also advocate for the Chapter within the faculty and administration. For high school Chapters and underage students, their attendance at evening meetings is mandatory, or a designated chaperone approved by the school may attend.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              The Chapter shall hold meetings only in places that are open and accessible to all members of the Association.
-            </li>
-            <li>
-              An annual election meeting should be held. At this meeting, the Treasurer will present the required reports. Also, the election of officers shall be
-              held.
-            </li>
-            <li>
-              Notices of all meetings shall be distributed to all members at least one
-              week prior to any meeting.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article VI:Disbursements and <br> Dues</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article V: Meetings</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                The Chapter shall hold meetings only in places that are open and accessible to all members of the Association.
+              </li>
+              <li>
+                An annual election meeting should be held. At this meeting, the Treasurer will present the required reports. Also, the election of officers shall be
+                held.
+              </li>
+              <li>
+                Notices of all meetings shall be distributed to all members at least one
+                week prior to any meeting.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              Disbursements from the Treasury for Chapter expenditures shall be
-              made by any active Chapter officer and shall be included in the minutes
-              of its meetings.
-            </li>
-            <li>
-              Dues shall be fixed annually.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article VII:Amendment and <br>Voting Procedures</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article VI:Disbursements and <br> Dues</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                Disbursements from the Treasury for Chapter expenditures shall be
+                made by any active Chapter officer and shall be included in the minutes
+                of its meetings.
+              </li>
+              <li>
+                Dues shall be fixed annually.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              All proposed changes to these Chapter Bylaws shall be approved by
-              ACM Headquarters - Chapters Department before being presented to
-              the Chapter membership for a vote.
-            </li>
-            <li>
-              No official business of the Chapter shall be conducted unless a quorum
-              is present. A quorum of the Chapter shall be defined as a majority of the
-              voting membership of the Chapter.
-            </li>
-            <li>
-              Officers will be elected by a plurality of votes cast.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article VIII: Code of <br>Conduct</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article VII:Amendment and <br>Voting Procedures</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                All proposed changes to these Chapter Bylaws shall be approved by
+                ACM Headquarters - Chapters Department before being presented to
+                the Chapter membership for a vote.
+              </li>
+              <li>
+                No official business of the Chapter shall be conducted unless a quorum
+                is present. A quorum of the Chapter shall be defined as a majority of the
+                voting membership of the Chapter.
+              </li>
+              <li>
+                Officers will be elected by a plurality of votes cast.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              Harassment or hostile behavior is unwelcome, including speech that intimidates, creates discomfort, or interferes with a person’s participation
-              or opportunity for participation, in a Chapter meeting or Chapter event.Harassment includes the use of abusive or degrading language, intimidation,
-              stalking, harassing photography or recording, inappropriate physical
-              contact, sexual imagery and unwelcome sexual attention. A response
-              that the participant was “just joking,” or “teasing,” or being “playful,” will
-              not be accepted.
-            </li>
-            <li>
-              Anyone witnessing or subject to unacceptable behavior should notify a
-              Chapter officer or ACM Headquarters.
-            </li>
-            <li>
-              Individuals violating these standards may be sanctioned or excluded
-              from further participation at the discretion of the Chapter officers or
-              responsible committee members.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white title">Article IX: Dissolution</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white title">Article VIII: Code of <br>Conduct</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list" style="color: #1e1e1e;">
+              <li>
+                Harassment or hostile behavior is unwelcome, including speech that intimidates, creates discomfort, or interferes with a person’s participation
+                or opportunity for participation, in a Chapter meeting or Chapter event.Harassment includes the use of abusive or degrading language, intimidation,
+                stalking, harassing photography or recording, inappropriate physical
+                contact, sexual imagery and unwelcome sexual attention. A response
+                that the participant was “just joking,” or “teasing,” or being “playful,” will
+                not be accepted.
+              </li>
+              <li>
+                Anyone witnessing or subject to unacceptable behavior should notify a
+                Chapter officer or ACM Headquarters.
+              </li>
+              <li>
+                Individuals violating these standards may be sanctioned or excluded
+                from further participation at the discretion of the Chapter officers or
+                responsible committee members.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list" style="color: #1e1e1e;">
-            <li>
-              Dissolution of this Chapter by consent of the members shall consist of
-              unanimous agreement of all its officers together with a majority vote at
-              a meeting which has been publicized in advance to all members of the
-              Chapter for the purpose of taking this vote.
-            </li>
-            <li>
-              Should this Chapter be dissolved, its assets and liabilities shall be transferred to ACM and shall be supervised by the ACM Finance Director.
-              Funds given to the Chapter from the University shall be returned to the
-              University.
-            </li>
-          </ul>
+        <div class="luminous-borders-container z-index-100">
+          <div class="luminous-borders-blur"></div>
+          <div class="luminous-borders-solid"></div>
+        </div>
+        <div class="spacer-4em---48px"></div>
+      </div>
+    </div>
+  </section>
+  <section class="gradient-border" style="background-color: white; margin:3px">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="luminous-borders-container">
+        <!-- <div class="luminous-borders-blur no-top"></div> -->
+        <!-- <div class="luminous-borders-solid no-top"></div> -->
+      </div>
+      <div class="spacer-2em---24px"></div>
+      <div class="section-title-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger padding">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <h2 class="section-title-line title font-control">Benefits of ACM</h2>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="noise-background"></div> -->
+      <!-- <div class="white-background"></div> -->
+    </div>
+  </section>
+  <section class="gradient-border" style="background-color: white; margin:3px;">
+    <div class="container w-container ">
+      <div class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline black">
+              <span class="section-title-line title">01</span>
+              Engaging Events
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p style="text-align: justify; color:#1e1e1e">
+            We organize various events throughout the academic year, including workshops, speaker events, company visits, and off-campus activities.
+            These events are designed to provide valuable insights, hands-on experience, and networking opportunities with professionals from academia and industry.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline black">
+              <span class="section-title-line title">02</span>
+              Knowledge Sharing
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p class="black" style="text-align: justify;">
+            As an ACM Student Chapter member, you will have access to a wealth of resources, such as technical papers, journals, and ACM's Digital Library.
+            We also conduct study groups and interactive sessions where you can exchange ideas, discuss emerging trends, and explore the frontiers of computer science.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline black">
+              <span class="section-title-line title">03</span>
+              Career Development
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p class="black" style="text-align: justify">
+            We understand the importance of preparing for a successful career in computing. Our chapter takes part in career fairs and provides a great network of opportunities. Additionally, we collaborate with industry experts and alumni to provide internships, job placements, and mentorship programs to help you navigate your professional journey.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline black">
+              <span class="section-title-line title">04</span>
+              Networking
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p class="black" style="text-align: justify">
+            Building strong connections within the computing community is crucial for personal and professional growth. Our chapter offers a platform to meet and collaborate with students from diverse backgrounds, faculty members, and industry professionals. Expand your network, forge valuable relationships, and pave the way for exciting collaborations.
+          </p>
         </div>
       </div>
 
       <div class="luminous-borders-container z-index-100">
-        <div class="luminous-borders-blur"></div>
-        <div class="luminous-borders-solid"></div>
+        <!-- <div class="luminous-borders-blur"></div> -->
+        <!-- <div class="luminous-borders-solid"></div> -->
       </div>
       <div class="spacer-4em---48px"></div>
     </div>
@@ -341,242 +434,339 @@
           </p>
         </div>
       </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article I: Purpose</div>
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-2em---24px"></div>
+
+      <div class="align-container">
+        <button id="expand-button"><img src="/images/general/plus_white.png" class="plus_icon"></button>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          const toggleButton = document.getElementById("expand-button");
+          const content = document.getElementById("hidden-content");
+
+          toggleButton.addEventListener("click", (event) => {
+            content.classList.toggle("height-fit");
+            toggleButton.classList.toggle("rotate");
+          })
+        })
+      </script>
+
+      <div class="height-0" id="hidden-content">
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article I: Purpose</div>
+            </div>
           </div>
-        </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              1. The Chapter is organized and will be operated exclusively for educational
-              and scientific purposes to promote the following:
-              <ul role="list">
-                <li>
-                  An increased knowledge of and greater interest in the science,
-                  design, development, construction, languages, management and
-                  applications of modern computing
-                </li>
-                <li>
-                  Greater interest in computing and its applications
-                </li>
-                <li>
-                  A means of communication between persons having an interest in
-                  computing
-                </li>
-              </ul>
-            </li>
-            <li>
-              2. The Chapter will serve students at MIT Bangalore and other interested
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                1. The Chapter is organized and will be operated exclusively for educational
+                and scientific purposes to promote the following:
+                <ul role="list">
+                  <li>
+                    An increased knowledge of and greater interest in the science,
+                    design, development, construction, languages, management and
+                    applications of modern computing
+                  </li>
+                  <li>
+                    Greater interest in computing and its applications
+                  </li>
+                  <li>
+                    A means of communication between persons having an interest in
+                    computing
+                  </li>
+                </ul>
+              </li>
+              <li>
+                2. The Chapter will serve students at MIT Bangalore and other interested
                 persons in the community.
-            </li>
-            <li>
-              3. The Chapter is chartered by ACM.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article II: Membership</div>
+              </li>
+              <li>
+                3. The Chapter is chartered by ACM.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              Membership in the Student Chapter shall be open to all ACM members
-              and nonmembers.
-            </li>
-            <li>
-              Voting membership in the Student Chapter shall be granted to all active
-              Chapter members.
-            </li>
-            <li>
-              Membership shall not be restricted according to race, creed, age, gender, disability, nationality, sexual orientation, economic status, veteran
-              status, or parenthood.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article III: Officers</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article II: Membership</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                Membership in the Student Chapter shall be open to all ACM members
+                and nonmembers.
+              </li>
+              <li>
+                Voting membership in the Student Chapter shall be granted to all active
+                Chapter members.
+              </li>
+              <li>
+                Membership shall not be restricted according to race, creed, age, gender, disability, nationality, sexual orientation, economic status, veteran
+                status, or parenthood.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              The officers of this Chapter shall be: Chair, Vice Chair, and Treasurer.
-              These individuals must be ACM Student Members. In addition, a Faculty
-              Sponsor with an ACM Professional Membership is required. Other officers may also be established.
-            </li>
-            <li>
-              The officers shall be elected by a plurality of votes cast at the annual
-              election meeting or via electronic voting and serve for a minimum of
-              one year.
-            </li>
-            <li>
-              Appointment or nomination of an individual to an officer position within
-              an ACM Chapter shall be in general limited to two full consecutive terms
-              in the same position. This recommendation is intended to encourage
-              the continuing infusion of new volunteers into the organization and to
-              encourage office holders to give thought to planning for their successor.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article IV: duties of Officers</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article III: Officers</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                The officers of this Chapter shall be: Chair, Vice Chair, and Treasurer.
+                These individuals must be ACM Student Members. In addition, a Faculty
+                Sponsor with an ACM Professional Membership is required. Other officers may also be established.
+              </li>
+              <li>
+                The officers shall be elected by a plurality of votes cast at the annual
+                election meeting or via electronic voting and serve for a minimum of
+                one year.
+              </li>
+              <li>
+                Appointment or nomination of an individual to an officer position within
+                an ACM Chapter shall be in general limited to two full consecutive terms
+                in the same position. This recommendation is intended to encourage
+                the continuing infusion of new volunteers into the organization and to
+                encourage office holders to give thought to planning for their successor.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              The Chair is the principal officer and is responsible for leading the
-              Chapter and managing its activities in accordance with the policies and
-              procedures of ACM and these bylaws.
-            </li>
-            <li>
-              The Vice Chair shall preside at meetings in the absence of the Chair,
-              assist the Chair in the management of the Chapter, and perform other
-              duties that may be assigned by the Chair.
-            </li>
-            <li>
-              The Treasurer is tasked with maintaining Chapter meeting minutes, financial records, and dues collection. They prepare annual reports, submit amendments to ACM Headquarters, and carry out duties assigned by the Chair.
-            </li>
-            <li>
-              The Faculty Sponsor, a faculty or full-time staff member of the school, is pivotal in overseeing the Chapter's activities. Responsibilities include ensuring continuity, fostering student-faculty relations, upholding university standards, and managing finances if needed. They also advocate for the Chapter within the faculty and administration. For high school Chapters and underage students, their attendance at evening meetings is mandatory, or a designated chaperone approved by the school may attend.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article V: Meetings</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article IV: duties of Officers</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                The Chair is the principal officer and is responsible for leading the
+                Chapter and managing its activities in accordance with the policies and
+                procedures of ACM and these bylaws.
+              </li>
+              <li>
+                The Vice Chair shall preside at meetings in the absence of the Chair,
+                assist the Chair in the management of the Chapter, and perform other
+                duties that may be assigned by the Chair.
+              </li>
+              <li>
+                The Treasurer is tasked with maintaining Chapter meeting minutes, financial records, and dues collection. They prepare annual reports, submit amendments to ACM Headquarters, and carry out duties assigned by the Chair.
+              </li>
+              <li>
+                The Faculty Sponsor, a faculty or full-time staff member of the school, is pivotal in overseeing the Chapter's activities. Responsibilities include ensuring continuity, fostering student-faculty relations, upholding university standards, and managing finances if needed. They also advocate for the Chapter within the faculty and administration. For high school Chapters and underage students, their attendance at evening meetings is mandatory, or a designated chaperone approved by the school may attend.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              The Chapter shall hold meetings only in places that are open and accessible to all members of the Association.
-            </li>
-            <li>
-              An annual election meeting should be held. At this meeting, the Treasurer will present the required reports. Also, the election of officers shall be
-              held.
-            </li>
-            <li>
-              Notices of all meetings shall be distributed to all members at least one
-              week prior to any meeting.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article VI: Disbursements and Dues</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article V: Meetings</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                The Chapter shall hold meetings only in places that are open and accessible to all members of the Association.
+              </li>
+              <li>
+                An annual election meeting should be held. At this meeting, the Treasurer will present the required reports. Also, the election of officers shall be
+                held.
+              </li>
+              <li>
+                Notices of all meetings shall be distributed to all members at least one
+                week prior to any meeting.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              Disbursements from the Treasury for Chapter expenditures shall be
-              made by any active Chapter officer and shall be included in the minutes
-              of its meetings.
-            </li>
-            <li>
-              Dues shall be fixed annually.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article VII: Amendment and Voting Procedures</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article VI: Disbursements and Dues</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                Disbursements from the Treasury for Chapter expenditures shall be
+                made by any active Chapter officer and shall be included in the minutes
+                of its meetings.
+              </li>
+              <li>
+                Dues shall be fixed annually.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              All proposed changes to these Chapter Bylaws shall be approved by
-              ACM Headquarters - Chapters Department before being presented to
-              the Chapter membership for a vote.
-            </li>
-            <li>
-              No official business of the Chapter shall be conducted unless a quorum
-              is present. A quorum of the Chapter shall be defined as a majority of the
-              voting membership of the Chapter.
-            </li>
-            <li>
-              Officers will be elected by a plurality of votes cast.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article VIII: Code of Conduct</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article VII: Amendment and Voting Procedures</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                All proposed changes to these Chapter Bylaws shall be approved by
+                ACM Headquarters - Chapters Department before being presented to
+                the Chapter membership for a vote.
+              </li>
+              <li>
+                No official business of the Chapter shall be conducted unless a quorum
+                is present. A quorum of the Chapter shall be defined as a majority of the
+                voting membership of the Chapter.
+              </li>
+              <li>
+                Officers will be elected by a plurality of votes cast.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              Harassment or hostile behavior is unwelcome, including speech that intimidates, creates discomfort, or interferes with a person’s participation
-              or opportunity for participation, in a Chapter meeting or Chapter event.Harassment includes the use of abusive or degrading language, intimidation,
-              stalking, harassing photography or recording, inappropriate physical
-              contact, sexual imagery and unwelcome sexual attention. A response
-              that the participant was “just joking,” or “teasing,” or being “playful,” will
-              not be accepted.
-            </li>
-            <li>
-              Anyone witnessing or subject to unacceptable behavior should notify a
-              Chapter officer or ACM Headquarters.
-            </li>
-            <li>
-              Individuals violating these standards may be sanctioned or excluded
-              from further participation at the discretion of the Chapter officers or
-              responsible committee members.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
-      <div class="product-page-description-container">
-        <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
-          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
-            <div class="overline white">Article IX: Dissolution</div>
+        <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+        <div class="product-page-description-container">
+          <div data-w-id="a4a91bd8-9981-ef7c-8b80-02bfc594391f" class="heading-animation-trigger">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <div class="overline white">Article VIII: Code of Conduct</div>
+            </div>
+          </div>
+          <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+            <ul role="list">
+              <li>
+                Harassment or hostile behavior is unwelcome, including speech that intimidates, creates discomfort, or interferes with a person’s participation
+                or opportunity for participation, in a Chapter meeting or Chapter event.Harassment includes the use of abusive or degrading language, intimidation,
+                stalking, harassing photography or recording, inappropriate physical
+                contact, sexual imagery and unwelcome sexual attention. A response
+                that the participant was “just joking,” or “teasing,” or being “playful,” will
+                not be accepted.
+              </li>
+              <li>
+                Anyone witnessing or subject to unacceptable behavior should notify a
+                Chapter officer or ACM Headquarters.
+              </li>
+              <li>
+                Individuals violating these standards may be sanctioned or excluded
+                from further participation at the discretion of the Chapter officers or
+                responsible committee members.
+              </li>
+            </ul>
           </div>
         </div>
-        <div data-w-id="2e92cbf1-8d40-3a18-d129-7a82748593b1" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
-          <ul role="list">
-            <li>
-              Dissolution of this Chapter by consent of the members shall consist of
-              unanimous agreement of all its officers together with a majority vote at
-              a meeting which has been publicized in advance to all members of the
-              Chapter for the purpose of taking this vote.
-            </li>
-            <li>
-              Should this Chapter be dissolved, its assets and liabilities shall be transferred to ACM and shall be supervised by the ACM Finance Director.
-              Funds given to the Chapter from the University shall be returned to the
-              University.
-            </li>
-          </ul>
+      </div>
+
+      <div class="luminous-borders-container z-index-100">
+        <div class="luminous-borders-blur"></div>
+        <div class="luminous-borders-solid"></div>
+      </div>
+      <div class="spacer-4em---48px"></div>
+    </div>
+    <section>
+      <div class="w-layout-blockcontainer container w-container">
+        <div class="luminous-borders-container">
+          <div class="luminous-borders-blur no-top"></div>
+          <div class="luminous-borders-solid no-top"></div>
+        </div>
+        <div class="spacer-2em---24px"></div>
+        <div class="section-title-container">
+          <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger padding">
+            <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+              <h2 class="section-title-line">Benefits of ACM</h2>
+              <div class="section-title-blur">Benefits of ACM</div>
+            </div>
+          </div>
+        </div>
+        <div class="noise-background"></div>
+        <div class="white-background"></div>
+      </div>
+    </section>
+    <div class="container w-container">
+      <div class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline white">
+              <span class="section-title-line">01</span>
+              <div class="section-title-blur">01</div>
+              Engaging Events
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p style="text-align: justify">
+            We organize various events throughout the academic year, including workshops, speaker events, company visits, and off-campus activities.
+            These events are designed to provide valuable insights, hands-on experience, and networking opportunities with professionals from academia and industry.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline white">
+              <span class="section-title-line">02</span>
+              <div class="section-title-blur">02</div>
+              Knowledge Sharing
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p style="text-align: justify">
+            As an ACM Student Chapter member, you will have access to a wealth of resources, such as technical papers, journals, and ACM's Digital Library.
+            We also conduct study groups and interactive sessions where you can exchange ideas, discuss emerging trends, and explore the frontiers of computer science.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline white">
+              <span class="section-title-line">03</span>
+              <div class="section-title-blur">03</div>
+              Career Development
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p style="text-align: justify">
+            We understand the importance of preparing for a successful career in computing. Our chapter takes part in career fairs and provides a great network of opportunities. Additionally, we collaborate with industry experts and alumni to provide internships, job placements, and mentorship programs to help you navigate your professional journey.
+          </p>
+        </div>
+      </div>
+
+      <div id="w-node-ef40212c-eb7a-db37-f1b8-0ef37a3ff5e1-a467c4a9" class="spacer-4em---48px"></div>
+      <div class="product-page-description-container">
+        <div data-w-id="4824b7fe-cc39-45b0-7fe2-0c5a220d333c" class="heading-animation-trigger">
+          <div style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="animation-content">
+            <div class="overline white">
+              <span class="section-title-line">04</span>
+              <div class="section-title-blur">04</div>
+              Networking
+            </div>
+          </div>
+        </div>
+        <div data-w-id="4b08c7d1-f967-0667-a8f2-78d480fb1521" style="opacity:0;-webkit-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 25px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-richtext">
+          <p style="text-align: justify">
+            Building strong connections within the computing community is crucial for personal and professional growth. Our chapter offers a platform to meet and collaborate with students from diverse backgrounds, faculty members, and industry professionals. Expand your network, forge valuable relationships, and pave the way for exciting collaborations.
+          </p>
         </div>
       </div>
 
